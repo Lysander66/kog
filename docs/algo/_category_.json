@@ -1,0 +1,8 @@
+{
+  "label": "algo",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "data struct & algorithm"
+  }
+}
