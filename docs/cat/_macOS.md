@@ -25,7 +25,6 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 export GOPATH=/Users/lysander/go
 export PATH=$GOPATH/bin:$PATH
 
-alias vsc="'/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code'"
 alias pxy="export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;"
 
 setopt EXTENDED_HISTORY
@@ -54,9 +53,7 @@ export NVM_DIR="$HOME/.nvm"
 ### Remove Duplicate
 
 [Remove Duplicate zsh History](https://leetschau.github.io/remove-duplicate-zsh-history.html)
-
 bash 会将所有终端的输入历史保存在 ~/.bash_history 中，同理，zsh 会保存在 ~/.zsh_history 中。
-
 zsh 使用 HISTFILE 变量来管理保存的 zsh_history 文件，默认一般保存在 ~/.zsh_history 中。
 
 ### GNU command
@@ -107,7 +104,6 @@ Using the GNU flavor of command line tools (instead of the FreeBSD flavor) shoul
 | Find Next                | ⌘G         | Find Previous ⇧⌘G         |
 | Go to Beginning of Line  | ⌃A         | ⌘←                        |
 | Go to End of Line        | ⌃E         | ⌘→                        |
-| Paste from History       | ⇧⌘V        | GoLand √                  |
 | Go to Beginning of File  | ⌘↑         | GoLand ⌘Home              |
 | Go to End of File        | ⌘↓         | GoLand ⌘End               |
 | Next Tab                 | ⌃Tab       | GoLand ⇧⌘]                |
@@ -137,45 +133,15 @@ Using the GNU flavor of command line tools (instead of the FreeBSD flavor) shoul
 
 ## Useful
 
-### Magnet
-
-[售价 ¥18.00](https://apps.apple.com/cn/app/magnet/id441258766?mt=12)，用键盘更方便！Mac 自带的分屏功能鼠标点击好麻烦...
-
-### Automator
-
-**设置快捷键 调用浏览器打开指定网页，[Alfred 也有类似功能](https://www.zhihu.com/question/32227549/answer/650519870)**  
-自动操作-选取文稿类型-快速操作-运行 AppleScript
-{{< code lang="applescript" >}}
-on run {input, parameters}
-
-    set myLink to "https://www.google.com"
-    tell application "Chrome"
-        activate
-        tell front window to make new tab at after (get active tab) with properties {URL:myLink} -- open a new tab after the current tab
-    end tell
-
-    return input
-
-end run
-{{< /code >}}
-
-系统偏好设置-键盘-快捷键-服务-通用，找到刚才保存的服务，设置快捷键即可
-
-### Spotlight
-
-聚焦搜索 不仅能快速打开软件、当计算器、查找文件，还能查汇率，算单位。例如「1 公斤等于多少磅？」或者「1 美元等于多少人民币」
-
 ### Handoff
 
 [使用“连续互通”连接 Mac、iPhone、iPad](https://support.apple.com/zh-cn/HT204681)
 
-### Hot Corners
+### 触控手势
 
-系统偏好设置-桌面与屏幕保护程序-触发角，我一般把右下角设定为「将显示器置入睡眠状态」
+[触控手势](https://support.apple.com/zh-cn/HT204895)
 
 ## references
 
 1. [iTerm2 integrated with tmux](https://www.iterm2.com/documentation-tmux-integration.html)
-1. [iTerm2 整合 Tmux](https://blog.csdn.net/lvhdbb/article/details/95035743)
 1. [Tmux 使用教程](http://www.ruanyifeng.com/blog/2019/10/tmux.html)
-1. [终端 iTerm2](https://www.studytime.xin/article/mac-os-iterm.html)

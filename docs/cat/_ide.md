@@ -23,6 +23,12 @@ cmd+b Go to declaration _中键_
   show tabs in one row 取消勾选  
   live template fmt.Println()
 
+```
+pf fmt.Printf("$END$%+v\n", $VAR$)
+pl fmt.Println($VAR$)
+ps fmt.Printf("$END$%s\n", $VAR$)
+```
+
 ### IntelliJ IDEA
 
 设置 Ctrl+右键 查看实现类，Keymap-搜索 implementation-Add Mouse Shortcut
