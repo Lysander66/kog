@@ -506,13 +506,13 @@ func preorder(root *Node) (res []int) {
 	if root == nil {
 		return
 	}
-	stk := []*Node{root}
-	for len(stk) > 0 {
-		node := stk[len(stk)-1]
-		stk = stk[:len(stk)-1]
+	s := []*Node{root}
+	for len(s) > 0 {
+		node := s[len(s)-1]
+		s = s[:len(s)-1]
 		res = append(res, node.Val)
 		for i := len(node.Children) - 1; i >= 0; i-- {
-			stk = append(stk, node.Children[i])
+			s = append(s, node.Children[i])
 		}
 	}
 	return
@@ -528,13 +528,13 @@ func postorder(root *Node) (res []int) {
 	if root == nil {
 		return
 	}
-	stk := []*Node{root}
-	for len(stk) > 0 {
-		node := stk[len(stk)-1]
-		stk = stk[:len(stk)-1]
+	s := []*Node{root}
+	for len(s) > 0 {
+		node := s[len(s)-1]
+		s = s[:len(s)-1]
 		res = append(res, node.Val)
 		for _, child := range node.Children {
-			stk = append(stk, child)
+			s = append(s, child)
 		}
 	}
 	length := len(res)
@@ -550,27 +550,22 @@ func postorder(root *Node) (res []int) {
 [429. N 叉树的层序遍历](https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal)
 
 ```go
-func levelOrder(root *Node) [][]int {
-	res := make([][]int, 0)
+func levelOrder(root *Node) (ans [][]int) {
 	if root == nil {
-		return res
+		return
 	}
-	queue := []*Node{root}
-	level := 0
-	for len(queue) > 0 {
-		length := len(queue)
-		res = append(res, []int{})
+	q := []*Node{root}
+	for len(q) > 0 {
+		var level []int
+		length := len(q)
 		for i := 0; i < length; i++ {
-			node := queue[i]
-			res[level] = append(res[level], node.Val)
-			for _, child := range node.Children {
-				queue = append(queue, child)
-			}
+			level = append(level, q[i].Val)
+			q = append(q, q[i].Children...)
 		}
-		queue = queue[length:]
-		level++
+		ans = append(ans, level)
+		q = q[length:]
 	}
-	return res
+	return
 }
 ```
 

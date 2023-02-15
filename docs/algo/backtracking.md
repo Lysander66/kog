@@ -37,6 +37,55 @@ public String getPermutation(int n, int k) {
 
 [37. 解数独](https://leetcode-cn.com/problems/sudoku-solver/)
 
+```go
+func solveSudoku(board [][]byte) {
+	var dfs func([][]byte) bool
+	dfs = func(board [][]byte) bool {
+		for i := 0; i < 9; i++ {
+			for j := 0; j < 9; j++ {
+				if board[i][j] != '.' {
+					continue
+				}
+				for k := '1'; k <= '9'; k++ {
+					board[i][j] = byte(k)
+					if isValid(board, i, j) && dfs(board) {
+						return true
+					}
+					board[i][j] = '.'
+				}
+				return false
+			}
+
+		}
+		return true
+	}
+
+	dfs(board)
+}
+
+func isValid(board [][]byte, x, y int) bool {
+	for i := 0; i < 9; i++ {
+		// 行
+		if i != x && board[i][y] == board[x][y] {
+			return false
+		}
+		// 列
+		if i != y && board[x][i] == board[x][y] {
+			return false
+		}
+	}
+	// 宫
+	for i := 3 * (x / 3); i < 3*(x/3+1); i++ {
+		for j := 3 * (y / 3); j < 3*(y/3+1); j++ {
+			if (i != x || j != y) && board[i][j] == board[x][y] {
+				return false
+			}
+		}
+	}
+	return true
+}
+```
+
 ### N 皇后
 
 [51. N 皇后](https://leetcode-cn.com/problems/n-queens)
@@ -165,24 +214,22 @@ void dfs(int row, boolean[] cols, boolean[] main_diag, boolean[] anti_diag, int 
 func permute(nums []int) [][]int {
 	ans := make([][]int, 0)
 	used := make([]bool, len(nums))
-	dfs(nums, &ans, used, []int{})
+	backtrack(nums, &ans, used, []int{})
 	return ans
 }
 
-func dfs(nums []int, ans *[][]int, used []bool, cur []int) {
+func backtrack(nums []int, ans *[][]int, used []bool, cur []int) {
 	if len(cur) == len(nums) {
-		tmp := make([]int, len(cur))
-		copy(tmp, cur)
-		*ans = append(*ans, tmp)
+		*ans = append(*ans, append([]int(nil), cur...))
 		return
 	}
 	for i := range nums {
 		if !used[i] {
-			used[i] = true
 			cur = append(cur, nums[i])
-			dfs(nums, ans, used, cur)
-			used[i] = false
+			used[i] = true
+			backtrack(nums, ans, used, cur)
 			cur = cur[:len(cur)-1]
+			used[i] = false
 		}
 	}
 }
@@ -195,27 +242,31 @@ func dfs(nums []int, ans *[][]int, used []bool, cur []int) {
 ```go
 func permuteUnique(nums []int) (ans [][]int) {
 	sort.Ints(nums)
-	n := len(nums)
-	used := make([]bool, n)
-	var cur []int
-	var dfs func(int)
-	dfs = func(idx int) {
+	var (
+		n    = len(nums)
+		used = make([]bool, n)
+		cur  []int
+	)
+
+	var backtrack func(int)
+	backtrack = func(idx int) {
 		if idx == n {
 			ans = append(ans, append([]int(nil), cur...))
 			return
 		}
 		for i := range nums {
-			if used[i] || (i > 0 && nums[i] == nums[i-1] && !used[i-1]) {
+			if used[i] || (i > 0 && nums[i-1] == nums[i] && !used[i-1]) {
 				continue
 			}
-			used[i] = true
 			cur = append(cur, nums[i])
-			dfs(idx + 1)
-			used[i] = false
+			used[i] = true
+			backtrack(idx + 1)
 			cur = cur[:len(cur)-1]
+			used[i] = false
 		}
 	}
-	dfs(0)
+
+	backtrack(0)
 	return
 }
 ```
