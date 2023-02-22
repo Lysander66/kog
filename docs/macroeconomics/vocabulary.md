@@ -1,5 +1,5 @@
 ---
-sidebar_position: 100
+sidebar_position: 9
 ---
 
 ## 一
@@ -38,12 +38,7 @@ sidebar_position: 100
 1. domestic
    adj.
    本国的；国内的；家用的；家庭的；家务的；喜爱家庭生活的；享受家庭乐趣的；乐于操持家务的；驯养的
-1. GDP
-   Gross Domestic Product
-   国内生产总值
-1. GNP
-   Gross National Product
-   国民生产总值
+
 1. direct
    adj. 直接的; 亲自的; 亲身的; 笔直的; 径直的; 最近的; 直射的; 正好的; 直爽的; 直系的;
    v. 把…对准(某方向或某人); 管理; 监督; 指导; 导演(戏剧或电影); 指挥(管弦乐队); 给（某人）指路; 指示; 把（信件等）寄至;
@@ -146,14 +141,14 @@ sidebar_position: 100
 1.
 1.
 
-## 二
+## Phrase
 
 1. grain
    n.
    粮食；谷物；颗粒；谷粒；细粒；少量；微量；一点儿；格令；纹理；（表面的）质地
    v.
    把…作成细粒；使(皮等)表面粗糙；染透；刮去(皮上的)毛
-1. with a grain of salt
+1. **with a grain of salt**
    半信半疑地，对某事打折扣或持保留态度;
 1. sort
    n.
@@ -168,7 +163,7 @@ sidebar_position: 100
 1. in terms of
    用……的话，用……的字眼（或措辞）；根据，按照；用……的思想方法；在……方面，从……方面（说来）；从……角度看
 
-## 三
+## Other
 
 1. punctuation
    n. 标点符号; 标点符号用法;
