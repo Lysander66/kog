@@ -14,10 +14,6 @@ go get -u -v github.com/gogf/gf/v2
 go get -u gopkg.in/natefinch/lumberjack.v2
 go get -u github.com/rs/zerolog/log
 go get github.com/spf13/viper
-go get
-go get
-go get
-go get
 go get -u github.com/gin-gonic/gin
 go get github.com/gin-contrib/cors
 go get github.com/gin-contrib/pprof
