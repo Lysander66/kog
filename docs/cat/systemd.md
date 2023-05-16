@@ -51,7 +51,10 @@ After=network.target
 [Service]
 ExecStart=/usr/local/bin/ulive
 Restart=always
+RestartSec=5
 User=root
+StandardOutput=file:/var/log/ulive.log
+StandardError=file:/var/log/ulive.log
 
 [Install]
 WantedBy=multi-user.target
@@ -76,6 +79,14 @@ sudo systemctl status ulive.service
 
 ```sh
 systemctl list-unit-files --type=service --state=enabled
+```
+
+查看 ulive 服务的日志
+
+```sh
+tail -f /var/log/ulive.log
+sudo journalctl -u ulive.service
+sudo journalctl -u ulive.service -n 20
 ```
 
 ## references
