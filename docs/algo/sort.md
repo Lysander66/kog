@@ -24,9 +24,6 @@ sidebar_position: 1
 
 ```go
 func bubbleSort(arr []int) {
-	if len(arr) <= 1 {
-		return
-	}
 	for i := 0; i < len(arr); i++ {
 		var flag bool
 		for j := 0; j < len(arr)-1-i; j++ {
@@ -50,24 +47,6 @@ func bubbleSort(arr []int) {
 
 ```go
 func insertionSort(arr []int) {
-	if len(arr) <= 1 {
-		return
-	}
-	for i := 1; i < len(arr); i++ {
-		for j := i; j > 0 && arr[j] < arr[j-1]; j-- {
-			arr[j], arr[j-1] = arr[j-1], arr[j]
-		}
-	}
-}
-```
-
-已经有序则 break
-
-```go
-func insertionSort(arr []int) {
-	if len(arr) <= 1 {
-		return
-	}
 	for i := 1; i < len(arr); i++ {
 		for j := i; j > 0; j-- {
 			if arr[j] >= arr[j-1] {
@@ -84,20 +63,17 @@ func insertionSort(arr []int) {
 第一轮排序(i = 0)找出最小的元素放到 a[0]  
 第二轮排序(i = 1)从未排序区间找出最小的元素放到 a[i]
 
-```java
-public void selectionSort(int[] a) {
-    int n = a.length;
-    if (n <= 1) return;
-    for (int i = 0; i < n - 1; ++i) {
-        int min = i;
-        for (int j = i + 1; j < n; ++j) {
-            if (a[j] < a[min])
-                min = j;
-        }
-        int tmp = a[i];
-        a[i] = a[min];
-        a[min] = tmp;
-    }
+```go
+func selectionSort(arr []int) {
+	for i := 0; i < len(arr)-1; i++ {
+		minIndex := i
+		for j := i + 1; j < len(arr); j++ {
+			if arr[j] < arr[minIndex] {
+				minIndex = j
+			}
+		}
+		arr[i], arr[minIndex] = arr[minIndex], arr[i]
+	}
 }
 ```
 
