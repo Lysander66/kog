@@ -9,6 +9,203 @@ sidebar_position: 2
 
 最简单的情况：有序数组中不存在重复元素，查找值等于给定值的数据。
 
+### 第一个错误的版本
+
+[278. 第一个错误的版本](https://leetcode-cn.com/problems/first-bad-version)
+
+```go
+func firstBadVersion(n int) int {
+	return sort.Search(n, func(i int) bool { return isBadVersion(i) })
+}
+```
+
+```go
+func firstBadVersion(n int) int {
+	i, j := 0, n
+	for i < j {
+		h := i + (j-i)/2
+		if isBadVersion(h) {
+			j = h
+		} else {
+			i = h + 1
+		}
+	}
+	return i
+}
+```
+
+### 猜数字大小
+
+[374. 猜数字大小](https://leetcode-cn.com/problems/guess-number-higher-or-lower)
+
+```go
+func guessNumber(n int) int {
+	i, j := 0, n
+	for i < j {
+		h := i + (j-i)/2
+		if guess(h) <= 0 {
+			j = h
+		} else {
+			i = h + 1
+		}
+	}
+	return i
+}
+```
+
+### x 的平方根
+
+[69. x 的平方根](https://leetcode-cn.com/problems/sqrtx)
+
+> 二分查找
+
+```go
+func mySqrt(x int) int {
+	ans := -1
+	left, right := 0, x
+	for left <= right {
+		mid := left + (right-left)/2
+		if mid*mid > x {
+			right = mid - 1
+		} else {
+			ans = mid
+			left = mid + 1
+		}
+	}
+	return ans
+}
+```
+
+牛顿迭代
+
+```go
+func mySqrt(x int) int {
+	if x == 0 {
+		return 0
+	}
+	C, x0 := float64(x), float64(x)
+	for {
+		xi := 0.5 * (x0 + C/x0)
+		if math.Abs(x0-xi) < 1e-7 {
+			break
+		}
+		x0 = xi
+	}
+	return int(x0)
+}
+```
+
+### 缺失的数字
+
+[0 ～ n-1 中缺失的数字](https://leetcode-cn.com/problems/que-shi-de-shu-zi-lcof)
+
+> 缺失数字左边值等于下标，右边不等  
+> 这道题相当于，找出第一个 `num[i] != i` 的下标
+
+```go
+func missingNumber(nums []int) int {
+	i, j := 0, len(nums)-1
+	for i <= j {
+		h := i + (j-i)/2
+		if nums[h] == h {
+			i = h + 1
+		} else {
+			j = h - 1
+		}
+	}
+	return i
+}
+```
+
+### 比目标字母大的最小字母
+
+[744. 寻找比目标字母大的最小字母](https://leetcode-cn.com/problems/find-smallest-letter-greater-than-target)
+
+```go
+func nextGreatestLetter(letters []byte, target byte) byte {
+	if letters[len(letters)-1] <= target {
+		return letters[0]
+	}
+	i, j := 0, len(letters)-1
+	for i < j {
+		h := i + (j-i)/2
+		if letters[h] > target {
+			j = h
+		} else {
+			i = h + 1
+		}
+	}
+	return letters[i]
+}
+```
+
+### Pow(x, n)
+
+[50. Pow(x, n)](https://leetcode-cn.com/problems/powx-n/)
+
+> 快速幂
+
+```go
+func myPow(x float64, n int) float64 {
+	if n == 0 {
+		return 1
+	}
+	if n == -1 {
+		return 1 / x
+	}
+	y := myPow(x, n>>1)
+	if n&1 == 1 {
+		return y * y * x
+	}
+	return y * y
+}
+```
+
+### 寻找旋转排序数组中的最小值
+
+[153. 寻找旋转排序数组中的最小值](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/)
+
+> 画图理解。要么是直线，例如 `[1, 2, 3, 4, 5]`  
+> 要么是折线，例如 `[3, 4, 5, 1, 2]`，前半段`[3, 4, 5]` 在后半段`[1, 2]`的上方
+
+```go
+func findMin(nums []int) int {
+	i, j := 0, len(nums)-1
+	for i < j {
+		h := i + (j-i)/2
+		if nums[h] <= nums[j] {
+			j = h
+		} else {
+			i = h + 1
+		}
+	}
+	return nums[i]
+}
+```
+
+### 寻找旋转排序数组中的最小值 II
+
+[154. 寻找旋转排序数组中的最小值 II](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii/)
+
+> 按题设，可能存在重复元素
+
+```go
+func findMin(nums []int) int {
+	i, j := 0, len(nums)-1
+	for i < j {
+		h := i + (j-i)/2
+		if nums[h] < nums[j] {
+			j = h
+		} else if nums[h] > nums[j] {
+			i = h + 1
+		} else {
+			j--
+		}
+	}
+	return nums[i]
+}
+```
+
 ### 搜索二维矩阵
 
 [74. 搜索二维矩阵](https://leetcode-cn.com/problems/search-a-2d-matrix)
@@ -73,196 +270,6 @@ func searchMatrix(matrix [][]int, target int) bool {
 		}
 	}
 	return false
-}
-```
-
-### 寻找旋转排序数组中的最小值
-
-[153. 寻找旋转排序数组中的最小值](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/)
-
-> 画图理解。要么是直线，例如 `[1, 2, 3, 4, 5]`  
-> 要么是折线，例如 `[3, 4, 5, 1, 2]`，前半段`[3, 4, 5]` 在后半段`[1, 2]`的上方
-
-```go
-func findMin(nums []int) int {
-	low, high := 0, len(nums)-1
-	for low < high {
-		pivot := low + (high-low)/2
-		if nums[pivot] > nums[high] {
-			low = pivot + 1
-		} else {
-			high = pivot
-		}
-	}
-	return nums[low]
-}
-```
-
-### 寻找旋转排序数组中的最小值 II
-
-[154. 寻找旋转排序数组中的最小值 II](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii/)
-
-> 按题设，可能存在重复元素
-
-```go
-func findMin(nums []int) int {
-	low, high := 0, len(nums)-1
-	for low < high {
-		pivot := low + (high-low)/2
-		if nums[pivot] > nums[high] {
-			low = pivot + 1
-		} else if nums[pivot] < nums[high] {
-			high = pivot
-		} else {
-			high--
-		}
-	}
-	return nums[low]
-}
-```
-
-### 比目标字母大的最小字母
-
-[744. 寻找比目标字母大的最小字母](https://leetcode-cn.com/problems/find-smallest-letter-greater-than-target)
-
-```go
-func nextGreatestLetter(letters []byte, target byte) byte {
-	low, high := 0, len(letters)
-	for low < high {
-		mid := low + (high-low)/2
-		if letters[mid] <= target {
-			low = mid + 1
-		} else {
-			high = mid
-		}
-	}
-	return letters[low%len(letters)]
-}
-```
-
-取余，如果 `low = len(letters)`，则返回 letters[0]
-
-### 第一个错误的版本
-
-[278. 第一个错误的版本](https://leetcode-cn.com/problems/first-bad-version)
-
-```go
-func firstBadVersion(n int) int {
-	lo, hi := 1, n
-	for lo <= hi {
-		mid := lo + (hi-lo)/2
-		if isBadVersion(mid) {
-			hi = mid - 1
-		} else {
-			lo = mid + 1
-		}
-	}
-	return lo
-}
-```
-
-### 猜数字大小
-
-[374. 猜数字大小](https://leetcode-cn.com/problems/guess-number-higher-or-lower)
-
-```go
-func guessNumber(n int) int {
-	left, right := 1, n
-	for left <= right {
-		mid := left + (right-left)/2
-		if guess(mid) == 1 {
-			left = mid + 1
-		} else {
-			right = mid - 1
-		}
-	}
-	return left
-}
-```
-
-### Pow(x, n)
-
-[50. Pow(x, n)](https://leetcode-cn.com/problems/powx-n/)
-
-> 快速幂
-
-```go
-func myPow(x float64, n int) float64 {
-	if n == 0 {
-		return 1
-	}
-	if n == -1 {
-		return 1 / x
-	}
-	y := myPow(x, n>>1)
-	if n&1 == 1 {
-		return y * y * x
-	}
-	return y * y
-}
-```
-
-### x 的平方根
-
-[69. x 的平方根](https://leetcode-cn.com/problems/sqrtx)
-
-> 二分查找
-
-```go
-func mySqrt(x int) int {
-	left, right := 0, x
-	ans := -1
-	for left <= right {
-		mid := left + (right-left)/2
-		if mid*mid <= x {
-			ans = mid
-			left = mid + 1
-		} else {
-			right = mid - 1
-		}
-	}
-	return ans
-}
-```
-
-牛顿迭代
-
-```go
-func mySqrt(x int) int {
-	if x == 0 {
-		return 0
-	}
-	C, x0 := float64(x), float64(x)
-	for {
-		xi := 0.5 * (x0 + C/x0)
-		if math.Abs(x0-xi) < 1e-7 {
-			break
-		}
-		x0 = xi
-	}
-	return int(x0)
-}
-```
-
-### 缺失的数字
-
-[0 ～ n-1 中缺失的数字](https://leetcode-cn.com/problems/que-shi-de-shu-zi-lcof)
-
-> 缺失数字左边值等于下标，右边不等  
-> 这道题相当于，找出第一个 `num[i] != i` 的下标
-
-```go
-func missingNumber(nums []int) int {
-	i, j := 0, len(nums)-1
-	for i <= j {
-		m := (i + j) / 2
-		if nums[m] == m {
-			i = m + 1
-		} else {
-			j = m - 1
-		}
-	}
-	return i
 }
 ```
 
