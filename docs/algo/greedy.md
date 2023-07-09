@@ -6,7 +6,7 @@ sidebar_position: 8
 
 ### 买卖股票的最佳时机 II
 
-[122. 买卖股票的最佳时机 II](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/)
+[122. 买卖股票的最佳时机 II](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/)
 
 ```java
 public int maxProfit(int[] prices) {
@@ -22,7 +22,7 @@ public int maxProfit(int[] prices) {
 
 ### 分发饼干
 
-[455. 分发饼干](https://leetcode-cn.com/problems/assign-cookies/)
+[455. 分发饼干](https://leetcode.cn/problems/assign-cookies/)
 
 ```java
 public int findContentChildren(int[] g, int[] s) {
@@ -42,7 +42,7 @@ public int findContentChildren(int[] g, int[] s) {
 
 ### K 次取反后最大化的数组和
 
-[1005. K 次取反后最大化的数组和](https://leetcode-cn.com/problems/maximize-sum-of-array-after-k-negations/)
+[1005. K 次取反后最大化的数组和](https://leetcode.cn/problems/maximize-sum-of-array-after-k-negations/)
 
 ```java
 public int largestSumAfterKNegations(int[] A, int K) {
@@ -72,7 +72,7 @@ public int largestSumAfterKNegations(int[] A, int K) {
 
 ### 不含 AAA 或 BBB 的字符串
 
-[984. 不含 AAA 或 BBB 的字符串](https://leetcode-cn.com/problems/string-without-aaa-or-bbb/)
+[984. 不含 AAA 或 BBB 的字符串](https://leetcode.cn/problems/string-without-aaa-or-bbb/)
 
 ```java
 public String strWithout3a3b(int A, int B) {

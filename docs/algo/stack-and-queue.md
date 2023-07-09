@@ -10,7 +10,7 @@ Stack & Queue
 
 ### 有效的括号
 
-[20. 有效的括号](https://leetcode-cn.com/problems/valid-parentheses)
+[20. 有效的括号](https://leetcode.cn/problems/valid-parentheses)
 
 > 从左到右依次扫描字符串，扫描到左括号时，则将其压入栈中；
 > 扫描到右括号时，从栈顶取出一个左括号。如果匹配，则继续向后扫描。
@@ -45,7 +45,7 @@ func isValid(s string) bool {
 
 ### 用栈实现队列
 
-[232. 用栈实现队列](https://leetcode-cn.com/problems/implement-queue-using-stacks)
+[232. 用栈实现队列](https://leetcode.cn/problems/implement-queue-using-stacks)
 
 > 将一个栈当作输入栈，用于 push；
 > 另一个栈当作输出栈，用于 pop 和 peek。  
@@ -92,7 +92,7 @@ func (q *MyQueue) Empty() bool {
 
 ### 用两个栈实现队列
 
-[剑指 Offer 09. 用两个栈实现队列](https://leetcode-cn.com/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof)
+[剑指 Offer 09. 用两个栈实现队列](https://leetcode.cn/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof)
 
 > 删除时先判断 outStack 是否为空。如果为空则将 inStack 的数据弹出并压入 outStack
 
@@ -128,13 +128,13 @@ func (q *CQueue) DeleteHead() int {
 
 ### 包含 min 函数的栈
 
-[剑指 Offer 30. 包含 min 函数的栈](https://leetcode-cn.com/problems/bao-han-minhan-shu-de-zhan-lcof)
+[剑指 Offer 30. 包含 min 函数的栈](https://leetcode.cn/problems/bao-han-minhan-shu-de-zhan-lcof)
 
 ## 队列
 
 ### 用队列实现栈
 
-[225. 用队列实现栈](https://leetcode-cn.com/problems/implement-stack-using-queues)
+[225. 用队列实现栈](https://leetcode.cn/problems/implement-stack-using-queues)
 
 > push 时，新元素入队尾，然后旧元素依次出队再入队，这样新元素就到队首了。达到栈 LIFO 的效果。
 

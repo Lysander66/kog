@@ -32,7 +32,7 @@ sidebar_position: 2
 
 ### 对称二叉树
 
-[101. 对称二叉树](https://leetcode-cn.com/problems/symmetric-tree/)
+[101. 对称二叉树](https://leetcode.cn/problems/symmetric-tree/)
 
 ```go
 func isSymmetric(root *TreeNode) bool {
@@ -59,7 +59,7 @@ func dfs(left, right *TreeNode) bool {
 
 ### 翻转二叉树
 
-[226. 翻转二叉树](https://leetcode-cn.com/problems/invert-binary-tree)
+[226. 翻转二叉树](https://leetcode.cn/problems/invert-binary-tree)
 
 递归
 
@@ -104,7 +104,7 @@ func invertTree(root *TreeNode) *TreeNode {
 
 ### 合并二叉树
 
-[617. 合并二叉树](https://leetcode-cn.com/problems/merge-two-binary-trees)
+[617. 合并二叉树](https://leetcode.cn/problems/merge-two-binary-trees)
 
 ```go
 func mergeTrees(t1 *TreeNode, t2 *TreeNode) *TreeNode {
@@ -129,7 +129,7 @@ func mergeTrees(t1 *TreeNode, t2 *TreeNode) *TreeNode {
 
 ### 中序遍历
 
-[94. 二叉树的中序遍历](https://leetcode-cn.com/problems/binary-tree-inorder-traversal)
+[94. 二叉树的中序遍历](https://leetcode.cn/problems/binary-tree-inorder-traversal)
 
 ```go
 func inorderTraversal(root *TreeNode) (res []int) {
@@ -152,7 +152,7 @@ func inorderTraversal(root *TreeNode) (res []int) {
 
 ### 前序遍历
 
-[144. 二叉树的前序遍历](https://leetcode-cn.com/problems/binary-tree-preorder-traversal)
+[144. 二叉树的前序遍历](https://leetcode.cn/problems/binary-tree-preorder-traversal)
 
 ```go
 func preorderTraversal(root *TreeNode) (res []int) {
@@ -177,7 +177,7 @@ func preorderTraversal(root *TreeNode) (res []int) {
 
 ### 后序遍历
 
-[145. 二叉树的后序遍历](https://leetcode-cn.com/problems/binary-tree-postorder-traversal)
+[145. 二叉树的后序遍历](https://leetcode.cn/problems/binary-tree-postorder-traversal)
 
 ```go
 func postorderTraversal(root *TreeNode) (res []int) {
@@ -253,7 +253,7 @@ func postorderTraversal(root *TreeNode) (res []int) {
 
 ### 层序遍历
 
-[102. 二叉树的层次遍历](https://leetcode-cn.com/problems/binary-tree-level-order-traversal)
+[102. 二叉树的层次遍历](https://leetcode.cn/problems/binary-tree-level-order-traversal)
 
 ```go
 func levelOrder(root *TreeNode) [][]int {
@@ -285,11 +285,11 @@ func levelOrder(root *TreeNode) [][]int {
 
 ### 之字形层序遍历
 
-[103. 二叉树的锯齿形层序遍历](https://leetcode-cn.com/problems/binary-tree-zigzag-level-order-traversal/)
+[103. 二叉树的锯齿形层序遍历](https://leetcode.cn/problems/binary-tree-zigzag-level-order-traversal/)
 
 ### 自底向上的层序遍历
 
-[107. 二叉树的层次遍历 II](https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii)
+[107. 二叉树的层次遍历 II](https://leetcode.cn/problems/binary-tree-level-order-traversal-ii)
 
 ```go
 func levelOrderBottom(root *TreeNode) [][]int {
@@ -328,7 +328,7 @@ func levelOrderBottom(root *TreeNode) [][]int {
 
 ### 从前序与中序遍历序列构造二叉树
 
-[105. 从前序与中序遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
+[105. 从前序与中序遍历序列构造二叉树](https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
 
 > 题目说，假设树中没有重复的元素
 
@@ -360,7 +360,7 @@ func buildTree(preorder []int, inorder []int) *TreeNode {
 
 ### 二叉树的最大深度
 
-[104. 二叉树的最大深度](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree)
+[104. 二叉树的最大深度](https://leetcode.cn/problems/maximum-depth-of-binary-tree)
 
 ```go
 func maxDepth(root *TreeNode) int {
@@ -380,7 +380,7 @@ func max(x, y int) int {
 
 ### 二叉树的最小深度
 
-[111. 二叉树的最小深度](https://leetcode-cn.com/problems/minimum-depth-of-binary-tree)
+[111. 二叉树的最小深度](https://leetcode.cn/problems/minimum-depth-of-binary-tree)
 
 > dfs
 
@@ -442,7 +442,7 @@ func minDepth(root *TreeNode) int {
 
 ### 二叉树的堂兄弟节点
 
-[993. 二叉树的堂兄弟节点](https://leetcode-cn.com/problems/cousins-in-binary-tree)
+[993. 二叉树的堂兄弟节点](https://leetcode.cn/problems/cousins-in-binary-tree)
 
 ```java
 public boolean isCousins(TreeNode root, int x, int y) {
@@ -482,7 +482,7 @@ public boolean isCousins(TreeNode root, int x, int y) {
 
 ### N 叉树的最大深度
 
-[559. N 叉树的最大深度](https://leetcode-cn.com/problems/maximum-depth-of-n-ary-tree)
+[559. N 叉树的最大深度](https://leetcode.cn/problems/maximum-depth-of-n-ary-tree)
 
 ```go
 func maxDepth(root *Node) int {
@@ -499,7 +499,7 @@ func maxDepth(root *Node) int {
 
 ### N 叉树的前序遍历
 
-[589. N 叉树的前序遍历](https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal)
+[589. N 叉树的前序遍历](https://leetcode.cn/problems/n-ary-tree-preorder-traversal)
 
 ```go
 func preorder(root *Node) (res []int) {
@@ -521,7 +521,7 @@ func preorder(root *Node) (res []int) {
 
 ### N 叉树的后序遍历
 
-[590. N 叉树的后序遍历](https://leetcode-cn.com/problems/n-ary-tree-postorder-traversal)
+[590. N 叉树的后序遍历](https://leetcode.cn/problems/n-ary-tree-postorder-traversal)
 
 ```go
 func postorder(root *Node) (res []int) {
@@ -547,7 +547,7 @@ func postorder(root *Node) (res []int) {
 
 ### N 叉树的层序遍历
 
-[429. N 叉树的层序遍历](https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal)
+[429. N 叉树的层序遍历](https://leetcode.cn/problems/n-ary-tree-level-order-traversal)
 
 ```go
 func levelOrder(root *Node) (ans [][]int) {
@@ -642,7 +642,7 @@ func preorderTraversal(root *TreeNode) []int {
 
 ### 验证二叉搜索树
 
-[98. 验证二叉搜索树](https://leetcode-cn.com/problems/validate-binary-search-tree)
+[98. 验证二叉搜索树](https://leetcode.cn/problems/validate-binary-search-tree)
 
 ```go
 func isValidBST(root *TreeNode) bool {
@@ -669,7 +669,7 @@ func isValidBST(root *TreeNode) bool {
 
 ### 有序数组转二叉搜索树
 
-[108. 将有序数组转换为二叉搜索树](https://leetcode-cn.com/problems/convert-sorted-array-to-binary-search-tree)
+[108. 将有序数组转换为二叉搜索树](https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree)
 
 ```go
 func sortedArrayToBST(nums []int) *TreeNode {
@@ -683,7 +683,7 @@ func sortedArrayToBST(nums []int) *TreeNode {
 
 ### 二叉搜索树中的搜索
 
-[700. 二叉搜索树中的搜索](https://leetcode-cn.com/problems/search-in-a-binary-search-tree)
+[700. 二叉搜索树中的搜索](https://leetcode.cn/problems/search-in-a-binary-search-tree)
 
 > 递归
 
@@ -718,7 +718,7 @@ func searchBST(root *TreeNode, val int) *TreeNode {
 
 ### 实现 Trie (前缀树)
 
-[208. 实现 Trie (前缀树)](https://leetcode-cn.com/problems/implement-trie-prefix-tree)
+[208. 实现 Trie (前缀树)](https://leetcode.cn/problems/implement-trie-prefix-tree)
 
 ```go
 type Trie struct {

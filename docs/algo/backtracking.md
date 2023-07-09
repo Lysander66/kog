@@ -6,7 +6,7 @@ sidebar_position: 7
 
 ### 第 k 个排列
 
-[60. 第 k 个排列](https://leetcode-cn.com/problems/permutation-sequence)
+[60. 第 k 个排列](https://leetcode.cn/problems/permutation-sequence)
 
 > 暴力回溯需要在回溯到第 k 个排列时终止就不会超时了，但是效率依旧感人。
 > [可以用数学的方法来解](https://www.cnblogs.com/ariel-dreamland/p/9149577.html)
@@ -35,7 +35,7 @@ public String getPermutation(int n, int k) {
 
 ### 解数独
 
-[37. 解数独](https://leetcode-cn.com/problems/sudoku-solver/)
+[37. 解数独](https://leetcode.cn/problems/sudoku-solver/)
 
 ```go
 func solveSudoku(board [][]byte) {
@@ -88,7 +88,7 @@ func isValid(board [][]byte, x, y int) bool {
 
 ### N 皇后
 
-[51. N 皇后](https://leetcode-cn.com/problems/n-queens)
+[51. N 皇后](https://leetcode.cn/problems/n-queens)
 
 > 主对角线，y = -x + b 即 row + i = b，b 的最大值为 2n（当 row = n && i = n 时），所以 main_diag 的容量为 2n 即可。  
 > 同理，另一对角线，y = x + b 即 row -i = b，而为了防止下标为负数，可以加上 n，将 row -i + n 作为下标，最大值为 2n（当 row = n && i = 0 时），故 anti_diag 的容量也设为 2n。
@@ -176,7 +176,7 @@ void dfs(List<List<String>> resultList, int[] result, int row, int n) {
 
 ### N 皇后 II
 
-[52. N 皇后 II](https://leetcode-cn.com/problems/n-queens-ii)
+[52. N 皇后 II](https://leetcode.cn/problems/n-queens-ii)
 
 ```java
 int count = 0;
@@ -208,7 +208,7 @@ void dfs(int row, boolean[] cols, boolean[] main_diag, boolean[] anti_diag, int 
 
 ### 全排列
 
-[46. 全排列](https://leetcode-cn.com/problems/permutations)
+[46. 全排列](https://leetcode.cn/problems/permutations)
 
 ```go
 func permute(nums []int) [][]int {
@@ -237,7 +237,7 @@ func backtrack(nums []int, ans *[][]int, used []bool, cur []int) {
 
 ### 全排列 II
 
-[47. 全排列 II](https://leetcode-cn.com/problems/permutations-ii)
+[47. 全排列 II](https://leetcode.cn/problems/permutations-ii)
 
 ```go
 func permuteUnique(nums []int) (ans [][]int) {
@@ -273,7 +273,7 @@ func permuteUnique(nums []int) (ans [][]int) {
 
 ### 字母大小写全排列
 
-[784. 字母大小写全排列](https://leetcode-cn.com/problems/letter-case-permutation)
+[784. 字母大小写全排列](https://leetcode.cn/problems/letter-case-permutation)
 
 > 通过 `ch ^ 32` 的方式转换大小写，利用异或属于半加运算(不带进位的加法)的性质
 
@@ -296,11 +296,11 @@ func dfs(ans *[]string, s string, i int) {
 }
 ```
 
-[其它解法：二分掩码](https://leetcode-cn.com/problems/letter-case-permutation/solution/zi-mu-da-xiao-xie-quan-pai-lie-by-leetcode)
+[其它解法：二分掩码](https://leetcode.cn/problems/letter-case-permutation/solution/zi-mu-da-xiao-xie-quan-pai-lie-by-leetcode)
 
 ### 组合
 
-[77. 组合](https://leetcode-cn.com/problems/combinations)
+[77. 组合](https://leetcode.cn/problems/combinations)
 
 ```go
 func combine(n int, k int) (ans [][]int) {
@@ -330,7 +330,7 @@ func combine(n int, k int) (ans [][]int) {
 
 ### 组合总和
 
-[39. 组合总和](https://leetcode-cn.com/problems/combination-sum)
+[39. 组合总和](https://leetcode.cn/problems/combination-sum)
 
 ```java
 public List<List<Integer>> combinationSum(int[] candidates, int target) {
@@ -356,7 +356,7 @@ void dfs(List<List<Integer>> res, List<Integer> list, int[] candidates, int targ
 
 ### 组合总和 II
 
-[40. 组合总和 II](https://leetcode-cn.com/problems/combination-sum-ii)
+[40. 组合总和 II](https://leetcode.cn/problems/combination-sum-ii)
 
 ```java
 public List<List<Integer>> combinationSum2(int[] candidates, int target) {
@@ -386,7 +386,7 @@ void dfs(List<List<Integer>> res, List<Integer> list, int[] candidates, int targ
 
 ### 组合总和 III
 
-[216. 组合总和 III](https://leetcode-cn.com/problems/combination-sum-iii)
+[216. 组合总和 III](https://leetcode.cn/problems/combination-sum-iii)
 
 ```java
 public List<List<Integer>> combinationSum3(int k, int n) {
@@ -412,7 +412,7 @@ void dfs(List<List<Integer>> res, LinkedList<Integer> list, int start, int k, in
 
 ### 电话号码的字母组合
 
-[17. 电话号码的字母组合](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number)
+[17. 电话号码的字母组合](https://leetcode.cn/problems/letter-combinations-of-a-phone-number)
 
 ```java
 public List<String> letterCombinations(String digits) {

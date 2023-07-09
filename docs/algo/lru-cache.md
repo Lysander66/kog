@@ -18,7 +18,7 @@ LRU Cache
 
 ### LRUCache
 
-[146. LRU 缓存机制](https://leetcode-cn.com/problems/lru-cache)
+[146. LRU 缓存机制](https://leetcode.cn/problems/lru-cache)
 
 ```go
 type LRUCache struct {

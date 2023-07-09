@@ -11,7 +11,7 @@ sidebar_position: 2
 
 ### 第一个错误的版本
 
-[278. 第一个错误的版本](https://leetcode-cn.com/problems/first-bad-version)
+[278. 第一个错误的版本](https://leetcode.cn/problems/first-bad-version)
 
 ```go
 func firstBadVersion(n int) int {
@@ -36,7 +36,7 @@ func firstBadVersion(n int) int {
 
 ### 猜数字大小
 
-[374. 猜数字大小](https://leetcode-cn.com/problems/guess-number-higher-or-lower)
+[374. 猜数字大小](https://leetcode.cn/problems/guess-number-higher-or-lower)
 
 ```go
 func guessNumber(n int) int {
@@ -55,7 +55,7 @@ func guessNumber(n int) int {
 
 ### x 的平方根
 
-[69. x 的平方根](https://leetcode-cn.com/problems/sqrtx)
+[69. x 的平方根](https://leetcode.cn/problems/sqrtx)
 
 > 二分查找
 
@@ -97,7 +97,7 @@ func mySqrt(x int) int {
 
 ### 缺失的数字
 
-[0 ～ n-1 中缺失的数字](https://leetcode-cn.com/problems/que-shi-de-shu-zi-lcof)
+[0 ～ n-1 中缺失的数字](https://leetcode.cn/problems/que-shi-de-shu-zi-lcof)
 
 > 缺失数字左边值等于下标，右边不等  
 > 这道题相当于，找出第一个 `num[i] != i` 的下标
@@ -119,7 +119,7 @@ func missingNumber(nums []int) int {
 
 ### 比目标字母大的最小字母
 
-[744. 寻找比目标字母大的最小字母](https://leetcode-cn.com/problems/find-smallest-letter-greater-than-target)
+[744. 寻找比目标字母大的最小字母](https://leetcode.cn/problems/find-smallest-letter-greater-than-target)
 
 ```go
 func nextGreatestLetter(letters []byte, target byte) byte {
@@ -141,7 +141,7 @@ func nextGreatestLetter(letters []byte, target byte) byte {
 
 ### Pow(x, n)
 
-[50. Pow(x, n)](https://leetcode-cn.com/problems/powx-n/)
+[50. Pow(x, n)](https://leetcode.cn/problems/powx-n/)
 
 > 快速幂
 
@@ -163,7 +163,7 @@ func myPow(x float64, n int) float64 {
 
 ### 寻找旋转排序数组中的最小值
 
-[153. 寻找旋转排序数组中的最小值](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/)
+[153. 寻找旋转排序数组中的最小值](https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/)
 
 > 画图理解。要么是直线，例如 `[1, 2, 3, 4, 5]`  
 > 要么是折线，例如 `[3, 4, 5, 1, 2]`，前半段`[3, 4, 5]` 在后半段`[1, 2]`的上方
@@ -185,7 +185,7 @@ func findMin(nums []int) int {
 
 ### 寻找旋转排序数组中的最小值 II
 
-[154. 寻找旋转排序数组中的最小值 II](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii/)
+[154. 寻找旋转排序数组中的最小值 II](https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array-ii/)
 
 > 按题设，可能存在重复元素
 
@@ -208,7 +208,7 @@ func findMin(nums []int) int {
 
 ### 搜索二维矩阵
 
-[74. 搜索二维矩阵](https://leetcode-cn.com/problems/search-a-2d-matrix)
+[74. 搜索二维矩阵](https://leetcode.cn/problems/search-a-2d-matrix)
 
 > Treat matrix as 1D array.
 
@@ -244,7 +244,7 @@ func searchMatrix(matrix [][]int, target int) bool {
 
 ### 搜索二维矩阵 II
 
-[240. 搜索二维矩阵 II](https://leetcode-cn.com/problems/search-a-2d-matrix-ii)
+[240. 搜索二维矩阵 II](https://leetcode.cn/problems/search-a-2d-matrix-ii)
 
 > 选择出发点
 

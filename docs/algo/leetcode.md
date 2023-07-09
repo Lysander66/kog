@@ -4,7 +4,7 @@ sidebar_position: 1
 
 ## recursion
 
-[235. 二叉搜索树的最近公共祖先](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-search-tree)
+[235. 二叉搜索树的最近公共祖先](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree)
 
 ```go
 func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
@@ -24,7 +24,7 @@ func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 }
 ```
 
-[236. 二叉树的最近公共祖先](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree)
+[236. 二叉树的最近公共祖先](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree)
 
 ```go
 func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
@@ -45,7 +45,7 @@ func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 
 ## 剑指 Offer
 
-[数组中出现次数超过一半的数字](https://leetcode-cn.com/problems/shu-zu-zhong-chu-xian-ci-shu-chao-guo-yi-ban-de-shu-zi-lcof)
+[数组中出现次数超过一半的数字](https://leetcode.cn/problems/shu-zu-zhong-chu-xian-ci-shu-chao-guo-yi-ban-de-shu-zi-lcof)
 
 > Boyer-Moore 投票算法
 
@@ -66,7 +66,7 @@ func majorityElement(nums []int) int {
 }
 ```
 
-[03. 数组中重复的数字](https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof)
+[03. 数组中重复的数字](https://leetcode.cn/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof)
 最简单是用 map
 但是题目说 `nums 里的所有数字都在 0～n-1 的范围内`
 
@@ -106,7 +106,7 @@ func findRepeatNumber(nums []int) int {
 }
 ```
 
-[05. 替换空格](https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof)
+[05. 替换空格](https://leetcode.cn/problems/ti-huan-kong-ge-lcof)
 
 ```go
 func replaceSpace(s string) string {
@@ -122,7 +122,7 @@ func replaceSpace(s string) string {
 }
 ```
 
-[06. 从尾到头打印链表](https://leetcode-cn.com/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof)
+[06. 从尾到头打印链表](https://leetcode.cn/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof)
 
 ```go
 func reversePrint(head *ListNode) []int {
@@ -148,7 +148,7 @@ func reversePrint(head *ListNode) []int {
 
 ### 汉明距离
 
-[461. 汉明距离](https://leetcode-cn.com/problems/hamming-distance)
+[461. 汉明距离](https://leetcode.cn/problems/hamming-distance)
 
 ```go
 // 在工程中，我们应该直接使用内置函数。
@@ -175,7 +175,7 @@ func hammingDistance(x, y int) (ans int) {
 
 ### 位 1 的个数
 
-[191. 位 1 的个数](https://leetcode-cn.com/problems/number-of-1-bits)
+[191. 位 1 的个数](https://leetcode.cn/problems/number-of-1-bits)
 
 ```go
 // 普通
@@ -263,7 +263,7 @@ for ; i > 0; i-- {
 
 ## 杨辉三角
 
-[118. 杨辉三角](https://leetcode-cn.com/problems/pascals-triangle)
+[118. 杨辉三角](https://leetcode.cn/problems/pascals-triangle)
 
 ```go
 func generate(numRows int) [][]int {
@@ -282,7 +282,7 @@ func generate(numRows int) [][]int {
 
 ## 三角形的最大周长
 
-[976. 三角形的最大周长](https://leetcode-cn.com/problems/largest-perimeter-triangle)
+[976. 三角形的最大周长](https://leetcode.cn/problems/largest-perimeter-triangle)
 
 ```go
 func largestPerimeter(a []int) int {
@@ -300,15 +300,15 @@ func largestPerimeter(a []int) int {
 
 ### 下一个排列
 
-[31. 下一个排列](https://leetcode-cn.com/problems/next-permutation)
+[31. 下一个排列](https://leetcode.cn/problems/next-permutation)
 
 ### 两个数组的交集
 
-[349. 两个数组的交集](https://leetcode-cn.com/problems/intersection-of-two-arrays)
+[349. 两个数组的交集](https://leetcode.cn/problems/intersection-of-two-arrays)
 
 ### 两个数组的交集 II
 
-[350. 两个数组的交集 II](https://leetcode-cn.com/problems/intersection-of-two-arrays-ii)
+[350. 两个数组的交集 II](https://leetcode.cn/problems/intersection-of-two-arrays-ii)
 
 什么是局部性原理？
 局部性原理的逻辑是这样的：

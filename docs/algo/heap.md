@@ -22,7 +22,7 @@ sidebar_position: 3
 
 ### 数组中的第 K 个最大元素
 
-[215. 数组中的第 K 个最大元素](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)
+[215. 数组中的第 K 个最大元素](https://leetcode.cn/problems/kth-largest-element-in-an-array/)
 
 > build max heap
 > 然后交换堆顶元素和最后一个元素，heapify 前 n-1 个元素，这样堆顶就是第 2 大  的的元素，以此类推，可以找到第 3 大..第 k 大
@@ -61,7 +61,7 @@ func siftDown(a []int, i, n int) {
 
 ### 剑指 Offer 40. 最小的 k 个数
 
-[剑指 Offer 40. 最小的 k 个数](https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof/)
+[剑指 Offer 40. 最小的 k 个数](https://leetcode.cn/problems/zui-xiao-de-kge-shu-lcof/)
 
 > 先将前 k 个数插入大根堆中，随后从第 k+1 个数开始遍历，如果比堆顶小，则交换位置，然后堆化。
 
@@ -99,7 +99,7 @@ func siftDown(a []int, i, n int) {
 
 ### 数据流中的第 K 大元素
 
-[703. 数据流中的第 K 大元素](https://leetcode-cn.com/problems/kth-largest-element-in-a-stream/)
+[703. 数据流中的第 K 大元素](https://leetcode.cn/problems/kth-largest-element-in-a-stream/)
 
 ```
 
@@ -107,7 +107,7 @@ func siftDown(a []int, i, n int) {
 
 ### 数据流的中位数
 
-[295. 数据流的中位数](https://leetcode-cn.com/problems/find-median-from-data-stream/)
+[295. 数据流的中位数](https://leetcode.cn/problems/find-median-from-data-stream/)
 
 ```
 
@@ -115,7 +115,7 @@ func siftDown(a []int, i, n int) {
 
 ### 前 K 个高频元素
 
-[347. 前 K 个高频元素](https://leetcode-cn.com/problems/top-k-frequent-elements/)
+[347. 前 K 个高频元素](https://leetcode.cn/problems/top-k-frequent-elements/)
 
 ```
 
@@ -123,7 +123,7 @@ func siftDown(a []int, i, n int) {
 
 ### 前 K 个高频单词
 
-[692. 前 K 个高频单词](https://leetcode-cn.com/problems/top-k-frequent-words/)
+[692. 前 K 个高频单词](https://leetcode.cn/problems/top-k-frequent-words/)
 
 ```
 
@@ -131,7 +131,7 @@ func siftDown(a []int, i, n int) {
 
 ### 合并 K 个排序链表
 
-[23. 合并 K 个排序链表](https://leetcode-cn.com/problems/merge-k-sorted-lists)
+[23. 合并 K 个排序链表](https://leetcode.cn/problems/merge-k-sorted-lists)
 
 ```
 

@@ -16,7 +16,7 @@ sidebar_position: 2
 
 ### 删除链表的倒数第 N 个节点
 
-[19. 删除链表的倒数第 N 个节点](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list)
+[19. 删除链表的倒数第 N 个节点](https://leetcode.cn/problems/remove-nth-node-from-end-of-list)
 
 ```go
 func removeNthFromEnd(head *ListNode, n int) *ListNode {
@@ -36,7 +36,7 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 
 ### 链表开始入环的第一个节点
 
-[142. 环形链表 II](https://leetcode-cn.com/problems/linked-list-cycle-ii)
+[142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii)
 
 ```go
 func detectCycle(head *ListNode) *ListNode {
@@ -57,7 +57,7 @@ func detectCycle(head *ListNode) *ListNode {
 
 ### 环形链表
 
-[141. 环形链表](https://leetcode-cn.com/problems/linked-list-cycle)
+[141. 环形链表](https://leetcode.cn/problems/linked-list-cycle)
 
 ```go
 func hasCycle(head *ListNode) bool {
@@ -74,7 +74,7 @@ func hasCycle(head *ListNode) bool {
 
 ### 回文链表
 
-[234. 回文链表](https://leetcode-cn.com/problems/palindrome-linked-list)
+[234. 回文链表](https://leetcode.cn/problems/palindrome-linked-list)
 
 > 该方法的缺点是，在并发环境下，函数运行时需要锁定其他线程或进程对链表的访问，因为在函数执执行过程中链表暂时断开。
 
@@ -119,7 +119,7 @@ func isPalindrome(head *ListNode) bool {
 
 ### 合并两个有序链表
 
-[21. 合并两个有序链表](https://leetcode-cn.com/problems/merge-two-sorted-lists)
+[21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists)
 
 ```go
 func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
@@ -145,7 +145,7 @@ func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
 
 ### 合并两个有序数组
 
-[88. 合并两个有序数组](https://leetcode-cn.com/problems/merge-sorted-array)
+[88. 合并两个有序数组](https://leetcode.cn/problems/merge-sorted-array)
 
 > 从 2 个数组长度之和的最后一个位置开始，依次选取两个数组中大的数，从第一个数组的尾巴开始往头放
 
@@ -184,7 +184,7 @@ public void merge(int[] nums1, int m, int[] nums2, int n) {
 
 ### 调整数组使奇数位于偶数前面
 
-[剑指 Offer 21. 调整数组顺序使奇数位于偶数前面](https://leetcode-cn.com/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof)
+[剑指 Offer 21. 调整数组顺序使奇数位于偶数前面](https://leetcode.cn/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof)
 
 > 首尾双指针  
 > 头指针向右移，直到发现偶数  
@@ -213,7 +213,7 @@ func exchange(nums []int) []int {
 
 ### 颜色分类
 
-[75. 颜色分类](https://leetcode-cn.com/problems/sort-colors)
+[75. 颜色分类](https://leetcode.cn/problems/sort-colors)
 
 > 若 `nums[i]`等于 2，不断与 `nums[p2]` 交换，直到 `nums[i]`不等于 2  
 > 此时，如果 `nums[i]`等于 0，则与 `nums[p0]` 交换
@@ -235,7 +235,7 @@ func sortColors(nums []int) {
 
 ### 移除元素
 
-[27. 移除元素](https://leetcode-cn.com/problems/remove-element)
+[27. 移除元素](https://leetcode.cn/problems/remove-element)
 
 ```go
 func removeElement(nums []int, val int) int {
@@ -254,7 +254,7 @@ func removeElement(nums []int, val int) int {
 
 ### 删除排序数组中的重复项
 
-[26. 删除排序数组中的重复项](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array)
+[26. 删除排序数组中的重复项](https://leetcode.cn/problems/remove-duplicates-from-sorted-array)
 
 > 题设数组为排序数组，用双指针，前后对比即可。
 
@@ -273,7 +273,7 @@ func removeDuplicates(nums []int) int {
 
 ### 删除排序数组中的重复项 II
 
-[80. 删除排序数组中的重复项 II](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array-ii)
+[80. 删除排序数组中的重复项 II](https://leetcode.cn/problems/remove-duplicates-from-sorted-array-ii)
 
 ```go
 func removeDuplicates(nums []int) int {
@@ -290,7 +290,7 @@ func removeDuplicates(nums []int) int {
 
 ### 两数之和 II
 
-[167. 两数之和 II - 输入有序数组](https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted)
+[167. 两数之和 II - 输入有序数组](https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted)
 
 ```go
 func twoSum(numbers []int, target int) []int {
@@ -311,7 +311,7 @@ func twoSum(numbers []int, target int) []int {
 
 ### 三数之和
 
-[15. 三数之和](https://leetcode-cn.com/problems/3sum)
+[15. 三数之和](https://leetcode.cn/problems/3sum)
 
 > 排序，双指针
 
@@ -346,7 +346,7 @@ func threeSum(nums []int) (ans [][]int) {
 
 ### 四数之和
 
-[18. 四数之和](https://leetcode-cn.com/problems/4sum)
+[18. 四数之和](https://leetcode.cn/problems/4sum)
 
 ```go
 func fourSum(nums []int, target int) [][]int {
@@ -388,7 +388,7 @@ func fourSum(nums []int, target int) [][]int {
 
 ### 反转字符串
 
-[344. 反转字符串](https://leetcode-cn.com/problems/reverse-string)
+[344. 反转字符串](https://leetcode.cn/problems/reverse-string)
 
 ```go
 func reverseString(s []byte) {
@@ -407,7 +407,7 @@ func reverseString(s []byte) {
 
 ### 无重复字符的最长子串
 
-[3. 无重复字符的最长子串](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters)
+[3. 无重复字符的最长子串](https://leetcode.cn/problems/longest-substring-without-repeating-characters)
 
 ```go
 func lengthOfLongestSubstring(s string) int {
@@ -449,11 +449,11 @@ func lengthOfLongestSubstring(s string) int {
 
 ### 滑动窗口最大值
 
-[239. 滑动窗口最大值](https://leetcode-cn.com/problems/sliding-window-maximum)
+[239. 滑动窗口最大值](https://leetcode.cn/problems/sliding-window-maximum)
 
 ### 字符串的排列
 
-[567. 字符串的排列](https://leetcode-cn.com/problems/permutation-in-string)
+[567. 字符串的排列](https://leetcode.cn/problems/permutation-in-string)
 
 ## references
 

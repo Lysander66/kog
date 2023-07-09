@@ -6,7 +6,7 @@ sidebar_position: 6
 
 ### 行程和用户
 
-[262. 行程和用户](https://leetcode-cn.com/problems/trips-and-users/)
+[262. 行程和用户](https://leetcode.cn/problems/trips-and-users/)
 
 ```sql
 SELECT t.Request_at AS Day,
@@ -25,7 +25,7 @@ SELECT t.Request_at AS Day,
 
 ### 体育馆的人流量
 
-[601. 体育馆的人流量](https://leetcode-cn.com/problems/human-traffic-of-stadium/)
+[601. 体育馆的人流量](https://leetcode.cn/problems/human-traffic-of-stadium/)
 
 ```sql
 SELECT DISTINCT a.* FROM stadium a, stadium b, stadium c
@@ -38,7 +38,7 @@ SELECT DISTINCT a.* FROM stadium a, stadium b, stadium c
 
 ### 分数排名
 
-[178. 分数排名](https://leetcode-cn.com/problems/rank-scores/)
+[178. 分数排名](https://leetcode.cn/problems/rank-scores/)
 
 ```sql
 SELECT Score,
@@ -54,7 +54,7 @@ SELECT Score, DENSE_RANK() OVER(ORDER BY Score DESC) AS Rank FROM Scores;
 
 ### 部门工资前三高的员工
 
-[185. 部门工资前三高的员工](https://leetcode-cn.com/problems/department-top-three-salaries/)
+[185. 部门工资前三高的员工](https://leetcode.cn/problems/department-top-three-salaries/)
 
 ```sql
 SELECT D.Name AS Department, E.Name AS Employee, E.Salary FROM Employee E
@@ -66,7 +66,7 @@ SELECT D.Name AS Department, E.Name AS Employee, E.Salary FROM Employee E
 
 ### 部门工资最高的员工
 
-[184. 部门工资最高的员工](https://leetcode-cn.com/problems/department-highest-salary/)
+[184. 部门工资最高的员工](https://leetcode.cn/problems/department-highest-salary/)
 
 ```sql
 SELECT d.Name AS Department, e.Name AS Employee, e.Salary
@@ -78,7 +78,7 @@ SELECT d.Name AS Department, e.Name AS Employee, e.Salary
 
 ### 删除重复的电子邮箱
 
-[196. 删除重复的电子邮箱](https://leetcode-cn.com/problems/delete-duplicate-emails/)
+[196. 删除重复的电子邮箱](https://leetcode.cn/problems/delete-duplicate-emails/)
 
 ```sql
 # MySQL
@@ -92,7 +92,7 @@ WHERE
 
 ### 超过 5 名学生的课
 
-[596. 超过 5 名学生的课](https://leetcode-cn.com/problems/classes-more-than-5-students/)
+[596. 超过 5 名学生的课](https://leetcode.cn/problems/classes-more-than-5-students/)
 
 ```sql
 SELECT class FROM courses GROUP BY class HAVING COUNT(DISTINCT student) >= 5
@@ -100,7 +100,7 @@ SELECT class FROM courses GROUP BY class HAVING COUNT(DISTINCT student) >= 5
 
 ### 第二高的薪水
 
-[176. 第二高的薪水](https://leetcode-cn.com/problems/second-highest-salary/)
+[176. 第二高的薪水](https://leetcode.cn/problems/second-highest-salary/)
 
 ```sql
 -- Oracle
@@ -128,7 +128,7 @@ SELECT IFNULL((SELECT DISTINCT Salary
 
 ### 第 N 高的薪水
 
-[177. 第 N 高的薪水](https://leetcode-cn.com/problems/nth-highest-salary/)
+[177. 第 N 高的薪水](https://leetcode.cn/problems/nth-highest-salary/)
 
 ```sql
 -- Oracle
@@ -155,7 +155,7 @@ END
 
 ### 连续出现的数字
 
-[180. 连续出现的数字](https://leetcode-cn.com/problems/consecutive-numbers/)
+[180. 连续出现的数字](https://leetcode.cn/problems/consecutive-numbers/)
 
 ```sql
 SELECT DISTINCT t.Num as ConsecutiveNums FROM Logs t
@@ -165,7 +165,7 @@ SELECT DISTINCT t.Num as ConsecutiveNums FROM Logs t
 
 ### 换座位
 
-[626. 换座位](https://leetcode-cn.com/problems/exchange-seats/)
+[626. 换座位](https://leetcode.cn/problems/exchange-seats/)
 
 ```sql
 SELECT (CASE
@@ -179,7 +179,7 @@ SELECT (CASE
 
 ### 上升的温度
 
-[197. 上升的温度](https://leetcode-cn.com/problems/rising-temperature/)
+[197. 上升的温度](https://leetcode.cn/problems/rising-temperature/)
 
 ```sql
 -- Oracle
@@ -199,7 +199,7 @@ SELECT w2.id AS 'Id'
 
 ### 查找重复的电子邮箱
 
-[182. 查找重复的电子邮箱](https://leetcode-cn.com/problems/duplicate-emails/)
+[182. 查找重复的电子邮箱](https://leetcode.cn/problems/duplicate-emails/)
 
 ```sql
 SELECT Email FROM Person GROUP BY Email HAVING COUNT(*) > 1
@@ -207,7 +207,7 @@ SELECT Email FROM Person GROUP BY Email HAVING COUNT(*) > 1
 
 ### 从不订购的客户
 
-[183. 从不订购的客户](https://leetcode-cn.com/problems/customers-who-never-order/)
+[183. 从不订购的客户](https://leetcode.cn/problems/customers-who-never-order/)
 
 ```sql
 SELECT c.Name AS Customers FROM Customers c WHERE NOT EXISTS (SELECT 1 FROM Orders WHERE CustomerId = c.Id)
@@ -215,7 +215,7 @@ SELECT c.Name AS Customers FROM Customers c WHERE NOT EXISTS (SELECT 1 FROM Orde
 
 ### 组合两个表
 
-[175. 组合两个表](https://leetcode-cn.com/problems/combine-two-tables/)
+[175. 组合两个表](https://leetcode.cn/problems/combine-two-tables/)
 
 ```sql
 SELECT p.FirstName, p.LastName, a.City, a.State FROM Person p LEFT JOIN Address a ON p.PersonId = a.PersonId
@@ -223,7 +223,7 @@ SELECT p.FirstName, p.LastName, a.City, a.State FROM Person p LEFT JOIN Address 
 
 ### 超过经理收入的员工
 
-[181. 超过经理收入的员工](https://leetcode-cn.com/problems/employees-earning-more-than-their-managers/)
+[181. 超过经理收入的员工](https://leetcode.cn/problems/employees-earning-more-than-their-managers/)
 
 ```sql
 SELECT e.Name AS Employee FROM Employee e JOIN Employee m ON e.ManagerId = m.Id AND e.Salary > m.Salary
@@ -231,7 +231,7 @@ SELECT e.Name AS Employee FROM Employee e JOIN Employee m ON e.ManagerId = m.Id 
 
 ### 大的国家
 
-[595. 大的国家](https://leetcode-cn.com/problems/big-countries/)
+[595. 大的国家](https://leetcode.cn/problems/big-countries/)
 
 ```sql
 SELECT name, population, area FROM World WHERE area > 3000000 OR population > 25000000
@@ -239,7 +239,7 @@ SELECT name, population, area FROM World WHERE area > 3000000 OR population > 25
 
 ### 有趣的电影
 
-[620. 有趣的电影](https://leetcode-cn.com/problems/not-boring-movies/)
+[620. 有趣的电影](https://leetcode.cn/problems/not-boring-movies/)
 
 ```sql
 SELECT id, movie, description, rating FROM cinema WHERE description != 'boring' AND MOD(id, 2) = 1 ORDER BY rating DESC
@@ -247,7 +247,7 @@ SELECT id, movie, description, rating FROM cinema WHERE description != 'boring' 
 
 ### 交换工资
 
-[627. 交换工资](https://leetcode-cn.com/problems/swap-salary/)
+[627. 交换工资](https://leetcode.cn/problems/swap-salary/)
 
 ```sql
 -- 通用
