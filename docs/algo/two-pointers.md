@@ -20,14 +20,13 @@ sidebar_position: 2
 
 ```go
 func removeNthFromEnd(head *ListNode, n int) *ListNode {
-	dummy := &ListNode{Next: head}
-	fast, slow := dummy, dummy
-	// 先找到倒数第n个节点前一个节点，即倒数第n+1个节点
-	for i := 0; i < n+1; i++ {
+	dummy := &ListNode{0, head}
+	fast, slow := head, dummy
+	for i := 0; i < n; i++ {
 		fast = fast.Next
 	}
-	for fast != nil {
-		fast, slow = fast.Next, slow.Next
+	for ; fast != nil; fast = fast.Next {
+		slow = slow.Next
 	}
 	slow.Next = slow.Next.Next
 	return dummy.Next
@@ -411,37 +410,18 @@ func reverseString(s []byte) {
 
 ```go
 func lengthOfLongestSubstring(s string) int {
-	lookup := make(map[byte]int)
-	i, j, ans := 0, 0, 0
-	for ; i < len(s); i++ {
-		if idx, ok := lookup[s[i]]; ok && idx >= j {
-			j = idx + 1
-		}
-		if i-j+1 > ans {
-			ans = i - j + 1
-		}
-		lookup[s[i]] = i
-	}
-	return ans
-}
-```
-
-```go
-// 滑动窗口，双指针 i 和 start
-func lengthOfLongestSubstring(s string) int {
 	// 记录某个字符上一次出现的位置
-	lastOccurred := make(map[rune]int)
-	maxLength, start := 0, 0
-	for i, ch := range []rune(s) {
+	lookup := make(map[rune]int)
+	var start, maxLength int
+	for i, c := range s {
 		// 如果上一次出现的位置x在start之后，则将start指针移动到x后
-		if x, ok := lastOccurred[ch]; ok && x >= start {
+		if x, ok := lookup[c]; ok && x >= start {
 			start = x + 1
 		}
-		// maxLength = Max(maxLength, i-start+1)
 		if i-start+1 > maxLength {
 			maxLength = i - start + 1
 		}
-		lastOccurred[ch] = i
+		lookup[c] = i
 	}
 	return maxLength
 }
@@ -450,10 +430,56 @@ func lengthOfLongestSubstring(s string) int {
 ### 滑动窗口最大值
 
 [239. 滑动窗口最大值](https://leetcode.cn/problems/sliding-window-maximum)
+单调队列
+
+```go
+func maxSlidingWindow(nums []int, k int) (ans []int) {
+	var dq []int
+	for i := 0; i < len(nums); i++ {
+		if len(dq) > 0 && i-dq[0] == k {
+			dq = dq[1:] //pop_front
+		}
+		for len(dq) > 0 && nums[dq[len(dq)-1]] <= nums[i] {
+			dq = dq[:len(dq)-1] //pop_back
+		}
+		dq = append(dq, i)
+		if i >= k-1 {
+			ans = append(ans, nums[dq[0]])
+		}
+	}
+	return
+}
+```
 
 ### 字符串的排列
 
 [567. 字符串的排列](https://leetcode.cn/problems/permutation-in-string)
+
+```go
+func checkInclusion(s1, s2 string) bool {
+	n, m := len(s1), len(s2)
+	if n > m {
+		return false
+	}
+	cnt := [26]int{}
+	for _, ch := range s1 {
+		cnt[ch-'a']--
+	}
+	left := 0
+	for right, ch := range s2 {
+		x := ch - 'a'
+		cnt[x]++
+		for cnt[x] > 0 {
+			cnt[s2[left]-'a']--
+			left++
+		}
+		if right-left+1 == n {
+			return true
+		}
+	}
+	return false
+}
+```
 
 ## references
 
