@@ -8,6 +8,34 @@ sidebar_position: 6
 
 [5. 最长回文子串](https://leetcode.cn/problems/longest-palindromic-substring)
 
+> 中心扩展
+
+```go
+func longestPalindrome(s string) string {
+	if s == "" {
+		return ""
+	}
+	var start, end int
+	for i := 0; i < len(s); i++ {
+		if l, r := expand(s, i, i); r-l > end-start {
+			start, end = l, r
+		}
+		if l, r := expand(s, i, i+1); r-l > end-start {
+			start, end = l, r
+		}
+	}
+	return s[start : end+1]
+}
+
+func expand(s string, i, j int) (int, int) {
+	left, right := i, j
+	for left >= 0 && right < len(s) && s[left] == s[right] {
+		left, right = left-1, right+1
+	}
+	return left + 1, right - 1
+}
+```
+
 > Manacher 算法
 
 ### 接雨水
@@ -161,6 +189,10 @@ func min(x, y int) int {
 
 [62. 不同路径](https://leetcode.cn/problems/unique-paths)
 
+我们用 f(i,j) 表示从左上角走到 (i,j) 的路径数量，其中 i 和 j 的范围分别是 [0,m) 和 [0,n)。
+由于我们每一步只能从向下或者向右移动一步，因此要想走到 (i,j)，如果向下走一步，那么会从 (i−1,j) 走过来；如果向右走一步，那么会从 (i,j−1) 走过来。因此我们可以写出动态规划转移方程：
+`f(i,j)=f(i−1,j)+f(i,j−1)`
+
 ```go
 // 一维
 func uniquePaths(m, n int) int {
@@ -196,8 +228,12 @@ func uniquePaths(m, n int) int {
 	}
 	return dp[m-1][n-1]
 }
+```
 
-// 组合数
+从左上角到右下角，需要移动 m+n−2 次，其中有 m−1 次向下移动，n−1 次向右移动。因此路径的总数，就等于从 m+n−2 次移动中选择 n−1 次向下移动的方案数，即组合数：
+$C_{m+n−2}^{n−1}$
+
+```go
 func uniquePaths(m, n int) int {
 	return int(new(big.Int).Binomial(int64(m+n-2), int64(n-1)).Int64())
 }
@@ -310,6 +346,35 @@ func numWays(n int) int {
 		c = (a + b) % 1000000007
 	}
 	return c
+}
+```
+
+### 最长递增子序列
+
+[300. 最长递增子序列](https://leetcode.cn/problems/longest-increasing-subsequence)
+
+```go
+// 动态规划 dp[i]=max(dp[j])+1,其中0≤j<i且num[j]<num[i]
+func lengthOfLIS(nums []int) int {
+	if len(nums) == 0 {
+		return 0
+	}
+	dp := make([]int, len(nums))
+	dp[0] = 1
+	maxLen := 1
+	for i := 1; i < len(nums); i++ {
+		max := 0
+		for j := 0; j < i; j++ {
+			if nums[i] > nums[j] && dp[j] > max {
+				max = dp[j]
+			}
+		}
+		dp[i] = max + 1
+		if dp[i] > maxLen {
+			maxLen = dp[i]
+		}
+	}
+	return maxLen
 }
 ```
 

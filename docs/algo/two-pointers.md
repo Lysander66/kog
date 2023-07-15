@@ -430,19 +430,26 @@ func lengthOfLongestSubstring(s string) int {
 ### 滑动窗口最大值
 
 [239. 滑动窗口最大值](https://leetcode.cn/problems/sliding-window-maximum)
-单调队列
+
+为了可以同时弹出队首和队尾的元素，我们需要使用双端队列 Deque。
+满足这种单调性的双端队列一般称作「单调队列」。
 
 ```go
+// 在队列中，index从小到大排列，并且在在数组 nums 中对应的value单调递减。
 func maxSlidingWindow(nums []int, k int) (ans []int) {
 	var dq []int
 	for i := 0; i < len(nums); i++ {
+		// 弹出队首元素，保持窗口大小为 k
 		if len(dq) > 0 && i-dq[0] == k {
 			dq = dq[1:] //pop_front
 		}
-		for len(dq) > 0 && nums[dq[len(dq)-1]] <= nums[i] {
+		// 移除队尾元素，保持单调递减
+		for len(dq) > 0 && nums[i] >= nums[dq[len(dq)-1]] {
 			dq = dq[:len(dq)-1] //pop_back
 		}
 		dq = append(dq, i)
+
+		// i ∈ (0, k-1) 窗口大小不足 k
 		if i >= k-1 {
 			ans = append(ans, nums[dq[0]])
 		}

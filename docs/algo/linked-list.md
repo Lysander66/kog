@@ -60,6 +60,7 @@ func reverseBetween(head *ListNode, m int, n int) *ListNode {
 ### 删除节点
 
 [237. 删除链表中的节点](https://leetcode.cn/problems/delete-node-in-a-linked-list/)
+
 将想要删除的节点的值替换为它后面节点中的值，然后删除它之后的节点
 
 ```go

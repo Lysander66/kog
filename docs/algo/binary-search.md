@@ -61,22 +61,25 @@ func guessNumber(n int) int {
 
 ```go
 func mySqrt(x int) int {
-	ans := -1
-	left, right := 0, x
-	for left <= right {
-		mid := left + (right-left)/2
-		if mid*mid > x {
-			right = mid - 1
+	var sqrt int
+	l, r := 0, x
+	for l <= r {
+		mid := l + (r-l)/2
+		if mid*mid <= x {
+			sqrt = mid
+			l = mid + 1
 		} else {
-			ans = mid
-			left = mid + 1
+			r = mid - 1
 		}
 	}
-	return ans
+	return sqrt
 }
 ```
 
-牛顿迭代
+> 牛顿法
+> 多数方程不存在求根公式，因此求精确根非常困难，甚至不可解，从而寻找方程的近似根就显得特别重要。方法使用函数 的泰勒级数的前面几项来寻找方程 的根。牛顿迭代法是求方程根的重要方法之一，其最大优点是在方程 的单根附近具有平方收敛，而且该法还可以用来求方程的重根、复根，此时线性收敛，但是可通过一些方法变成超线性收敛。另外该方法广泛用于计算机编程中。
+
+一般来说，可以判断相邻两次迭代的结果的差值是否小于一个极小的非负数 ϵ\epsilonϵ，其中 ϵ 一般可以取 1e-6 或者 1e-7
 
 ```go
 func mySqrt(x int) int {
