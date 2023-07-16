@@ -8,6 +8,141 @@ Stack & Queue
 
 ## 栈
 
+### 逆波兰表达式求值
+
+[150. 逆波兰表达式求值](https://leetcode.cn/problems/evaluate-reverse-polish-notation)
+
+逆波兰表示法（Reverse Polish notation，RPN，或逆波兰记法），是一种是由波兰数学家扬·武卡谢维奇 1920 年引入的数学表达式形式，在逆波兰记法中，所有操作符置于操作数的后面，因此也被称为后缀表示法。逆波兰记法不需要括号来标识操作符的优
+先级。
+
+> 操作数入栈；遇到操作符时，操作数出栈，求值，将结果入栈；当一遍后，栈顶就是表达式的值。
+
+```go
+func evalRPN(tokens []string) int {
+	var stack []int
+	for _, token := range tokens {
+		val, err := strconv.Atoi(token)
+		if err == nil {
+			stack = append(stack, val)
+		} else {
+			x, y := stack[len(stack)-2], stack[len(stack)-1]
+			stack = stack[:len(stack)-2]
+			switch token {
+			case "+":
+				x += y
+			case "-":
+				x -= y
+			case "*":
+				x *= y
+			case "/":
+				x /= y
+			}
+			stack = append(stack, x)
+		}
+	}
+	return stack[0]
+}
+```
+
+### 中缀表达式转后缀表达式
+
+[中缀表达式转后缀表达式](https://www.nowcoder.com/practice/4e7267b55fdf430d9403aa12206572b3?sourceQid=23290&sourceTpId=13)
+
+> 调度场算法（Shunting Yard Algorithm）是一个用于将中缀表达式转换为后缀表达式的经典算法，由艾兹格·迪杰斯特拉引入，因其操作类似于火车编组场而得名。
+
+1. 操作数，直接输出
+1. 左括号，入栈
+1. 右括号，出栈并输出，直到遇到左括号
+1. 运算符，如果优先级高于栈顶元素则入栈，否则不断出栈直到符合条件
+1. 最后，剩余运算符出栈
+
+```go
+// Infix notation -> Reverse Polish notation
+func infix2Postfix(infix []string) (postfix []string) {
+	precedence := func(operator string) int {
+		switch operator {
+		case "*", "/":
+			return 5
+		case "+", "-":
+			return 4
+		}
+		return 0
+	}
+	var stack []string
+	for _, token := range infix {
+		switch token {
+		case "+", "-", "*", "/":
+			// 运算符，如果优先级高于栈顶元素则入栈，否则不断出栈直到符合条件
+			for len(stack) > 0 && precedence(stack[len(stack)-1]) >= precedence(token) {
+				postfix = append(postfix, stack[len(stack)-1])
+				stack = stack[:len(stack)-1]
+			}
+			stack = append(stack, token)
+		case "(":
+			stack = append(stack, token)
+		case ")":
+			// 弹出所有元素直到遇到左括号
+			for len(stack) > 0 {
+				if stack[len(stack)-1] != "(" {
+					postfix = append(postfix, stack[len(stack)-1])
+					stack = stack[:len(stack)-1]
+				} else {
+					// 弹出左括号
+					stack = stack[:len(stack)-1]
+					break
+				}
+			}
+		default:
+			// 操作数，直接输出
+			postfix = append(postfix, token)
+		}
+	}
+	for len(stack) > 0 {
+		postfix = append(postfix, stack[len(stack)-1])
+		stack = stack[:len(stack)-1]
+	}
+	return
+}
+
+func split(expr string) (arr []string) {
+	var (
+		start int
+		flag  bool
+		prev  rune
+	)
+	for i, ch := range expr {
+		if unicode.IsSpace(ch) || ch == '.' {
+			continue
+		}
+		isDigit := unicode.IsDigit(ch)
+		if ch == '-' {
+			// 使用 prev，因为 expr[i-1] 可能是空格
+			if i > 0 && (unicode.IsDigit(prev) || prev == ')') { // '-' 出现在数字或者 ')' 后面是减号
+			} else { // 负号
+				isDigit = true
+			}
+		}
+		if isDigit {
+			if !flag {
+				start = i
+				flag = true
+			}
+		} else {
+			if flag {
+				arr = append(arr, strings.TrimSpace(expr[start:i]))
+				flag = false
+			}
+			arr = append(arr, expr[i:i+1])
+		}
+		prev = ch
+	}
+	if flag {
+		arr = append(arr, strings.TrimSpace(expr[start:]))
+	}
+	return
+}
+```
+
 ### 有效的括号
 
 [20. 有效的括号](https://leetcode.cn/problems/valid-parentheses)
@@ -170,3 +305,8 @@ func (s *MyStack) Empty() bool {
 	return len(s.queue) == 0
 }
 ```
+
+## references
+
+1. [调度场算法](https://zh.wikipedia.org/zh-hans/调度场算法)
+1. [中缀表达式转后缀表达式](https://zq99299.github.io/dsalg-tutorial/dsalg-java-hsp/05/05.html)
