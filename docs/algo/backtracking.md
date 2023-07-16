@@ -4,9 +4,68 @@ sidebar_position: 7
 
 回溯算法实际上一个类似枚举的搜索尝试过程，主要是在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径。回溯法是一种选优搜索法，按选优条件向前搜索，以达到目标。
 
+### 全排列
+
+[46. 全排列](https://leetcode.cn/problems/permutations)
+
+```go
+func permute(nums []int) [][]int {
+	ans := make([][]int, 0)
+	used := make([]bool, len(nums))
+	dfs(nums, &ans, used, []int{})
+	return ans
+}
+
+func dfs(nums []int, ans *[][]int, used []bool, cur []int) {
+	if len(cur) == len(nums) {
+		*ans = append(*ans, append([]int(nil), cur...))
+		return
+	}
+	for i := range nums {
+		if !used[i] {
+			cur = append(cur, nums[i])
+			used[i] = true
+			dfs(nums, ans, used, cur)
+			cur = cur[:len(cur)-1]
+			used[i] = false
+		}
+	}
+}
+```
+
+### 组合
+
+[77. 组合](https://leetcode.cn/problems/combinations)
+
+```go
+func combine(n int, k int) (ans [][]int) {
+	// 将 temp 中 [0, k - 1] 每个位置 i 设置为 i + 1，即 [0, k - 1] 存 [1, k]
+	// 末尾加一位 n + 1 作为哨兵
+	var temp []int
+	for i := 1; i <= k; i++ {
+		temp = append(temp, i)
+	}
+	temp = append(temp, n+1)
+
+	for j := 0; j < k; {
+		comb := make([]int, k)
+		copy(comb, temp[:k])
+		ans = append(ans, comb)
+		// 寻找第一个 temp[j] + 1 != temp[j + 1] 的位置 t
+		// 我们需要把 [0, t - 1] 区间内的每个位置重置成 [1, t]
+		for j = 0; j < k && temp[j]+1 == temp[j+1]; j++ {
+			temp[j] = j + 1
+		}
+		// j 是第一个 temp[j] + 1 != temp[j + 1] 的位置
+		temp[j]++
+	}
+	return
+}
+```
+
 ### 第 k 个排列
 
-[60. 第 k 个排列](https://leetcode.cn/problems/permutation-sequence)
+[60. 排列序列](https://leetcode.cn/problems/permutation-sequence)
 
 > 暴力回溯需要在回溯到第 k 个排列时终止就不会超时了，但是效率依旧感人。
 > [可以用数学的方法来解](https://www.cnblogs.com/ariel-dreamland/p/9149577.html)
@@ -206,35 +265,6 @@ void dfs(int row, boolean[] cols, boolean[] main_diag, boolean[] anti_diag, int 
 }
 ```
 
-### 全排列
-
-[46. 全排列](https://leetcode.cn/problems/permutations)
-
-```go
-func permute(nums []int) [][]int {
-	ans := make([][]int, 0)
-	used := make([]bool, len(nums))
-	backtrack(nums, &ans, used, []int{})
-	return ans
-}
-
-func backtrack(nums []int, ans *[][]int, used []bool, cur []int) {
-	if len(cur) == len(nums) {
-		*ans = append(*ans, append([]int(nil), cur...))
-		return
-	}
-	for i := range nums {
-		if !used[i] {
-			cur = append(cur, nums[i])
-			used[i] = true
-			backtrack(nums, ans, used, cur)
-			cur = cur[:len(cur)-1]
-			used[i] = false
-		}
-	}
-}
-```
-
 ### 全排列 II
 
 [47. 全排列 II](https://leetcode.cn/problems/permutations-ii)
@@ -278,52 +308,23 @@ func permuteUnique(nums []int) (ans [][]int) {
 > 通过 `ch ^ 32` 的方式转换大小写，利用异或属于半加运算(不带进位的加法)的性质
 
 ```go
-func letterCasePermutation(S string) (ans []string) {
-	dfs(&ans, S, 0)
-	return
-}
-
-func dfs(ans *[]string, s string, i int) {
-	if i == len(s) {
-		*ans = append(*ans, s)
-		return
-	}
-	ch := s[i]
-	if (ch >= 'A' && ch <= 'Z') || ch >= 'a' && ch <= 'z' {
-		dfs(ans, s[:i]+string(ch^32)+s[i+1:], i+1) //搜索转换字母大小写后的组合
-	}
-	dfs(ans, s, i+1) //搜索原字母的组合
-}
-```
-
-[其它解法：二分掩码](https://leetcode.cn/problems/letter-case-permutation/solution/zi-mu-da-xiao-xie-quan-pai-lie-by-leetcode)
-
-### 组合
-
-[77. 组合](https://leetcode.cn/problems/combinations)
-
-```go
-func combine(n int, k int) (ans [][]int) {
-	// 将 temp 中 [0, k - 1] 每个位置 i 设置为 i + 1，即 [0, k - 1] 存 [1, k]
-	// 末尾加一位 n + 1 作为哨兵
-	var temp []int
-	for i := 1; i <= k; i++ {
-		temp = append(temp, i)
-	}
-	temp = append(temp, n+1)
-
-	for j := 0; j < k; {
-		comb := make([]int, k)
-		copy(comb, temp[:k])
-		ans = append(ans, comb)
-		// 寻找第一个 temp[j] + 1 != temp[j + 1] 的位置 t
-		// 我们需要把 [0, t - 1] 区间内的每个位置重置成 [1, t]
-		for j = 0; j < k && temp[j]+1 == temp[j+1]; j++ {
-			temp[j] = j + 1
+func letterCasePermutation(s string) (ans []string) {
+	var dfs func([]byte, int)
+	dfs = func(s []byte, i int) {
+		for i < len(s) && !unicode.IsLetter(rune(s[i])) {
+			i++
 		}
-		// j 是第一个 temp[j] + 1 != temp[j + 1] 的位置
-		temp[j]++
+		if i == len(s) {
+			ans = append(ans, string(s))
+			return
+		}
+		dfs(s, i+1) //搜索原字母的组合
+		s[i] ^= 32  //转换
+		dfs(s, i+1) //搜索转换字母大小写后的组合
+		s[i] ^= 32  //还原
 	}
+
+	dfs([]byte(s), 0)
 	return
 }
 ```
@@ -332,25 +333,30 @@ func combine(n int, k int) (ans [][]int) {
 
 [39. 组合总和](https://leetcode.cn/problems/combination-sum)
 
-```java
-public List<List<Integer>> combinationSum(int[] candidates, int target) {
-	List<List<Integer>> res = new LinkedList<>();
-	Arrays.sort(candidates);
-	dfs(res, new LinkedList<Integer>(), candidates, target, 0);
-	return res;
-}
+```go
+func combinationSum(candidates []int, target int) (ans [][]int) {
+	var path []int
+	var dfs func(int, int)
+	dfs = func(target, start int) {
+		// 由于进入更深层的时候，小于 0 的部分被剪枝，因此递归终止条件值只判断等于 0 的情况
+		if target == 0 {
+			ans = append(ans, append([]int(nil), path...))
+			return
+		}
+		for i := start; i < len(candidates); i++ {
+			// 剪枝前提是候选数组有序
+			if target-candidates[i] < 0 {
+				break
+			}
+			path = append(path, candidates[i])
+			dfs(target-candidates[i], i)
+			path = path[:len(path)-1]
+		}
+	}
 
-void dfs(List<List<Integer>> res, List<Integer> list, int[] candidates, int target, int start) {
-	if (target == 0) {
-		res.add(new LinkedList<>(list));
-		return;
-	}
-	while (start < candidates.length && candidates[start] <= target) {
-		list.add(candidates[start]);
-		dfs(res, list, candidates, target - candidates[start], start);
-		list.remove(list.size() - 1);
-		start++;
-	}
+	sort.Ints(candidates)
+	dfs(target, 0)
+	return
 }
 ```
 
@@ -358,29 +364,32 @@ void dfs(List<List<Integer>> res, List<Integer> list, int[] candidates, int targ
 
 [40. 组合总和 II](https://leetcode.cn/problems/combination-sum-ii)
 
-```java
-public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-    List<List<Integer>> res = new LinkedList<>();
-    Arrays.sort(candidates);
-    dfs(res, new LinkedList<Integer>(), candidates, target, 0);
-    return res;
-}
+```go
+func combinationSum2(candidates []int, target int) (ans [][]int) {
+	var path []int
+	var dfs func(int, int)
+	dfs = func(target, start int) {
+		if target == 0 {
+			ans = append(ans, append([]int(nil), path...))
+			return
+		}
+		var prev int
+		for i := start; i < len(candidates); i++ {
+			if target-candidates[i] < 0 {
+				break
+			}
+			if candidates[i] != prev {
+				path = append(path, candidates[i])
+				dfs(target-candidates[i], i+1)
+				path = path[:len(path)-1]
+			}
+			prev = candidates[i]
+		}
+	}
 
-void dfs(List<List<Integer>> res, List<Integer> list, int[] candidates, int target, int start) {
-    if (target == 0) {
-        res.add(new LinkedList<>(list));
-        return;
-    }
-    int prev = 0;// 所有数字（包括目标数）都是正整数，解集不能包含重复的组合
-    while (start < candidates.length && candidates[start] <= target) {
-        if (prev != candidates[start]) {
-            list.add(candidates[start]);
-            dfs(res, list, candidates, target - candidates[start], start + 1);
-            list.remove(list.size() - 1);
-            prev = candidates[start];
-        }
-        start++;
-    }
+	sort.Ints(candidates)
+	dfs(target, 0)
+	return
 }
 ```
 
@@ -388,25 +397,32 @@ void dfs(List<List<Integer>> res, List<Integer> list, int[] candidates, int targ
 
 [216. 组合总和 III](https://leetcode.cn/problems/combination-sum-iii)
 
-```java
-public List<List<Integer>> combinationSum3(int k, int n) {
-	List<List<Integer>> res = new LinkedList<>();
-	dfs(res, new LinkedList<Integer>(), 1, k, n);
-	return res;
-}
+```go
+func combinationSum3(k, n int) (ans [][]int) {
+	var path []int
+	var dfs func(int, int)
+	dfs = func(start, sum int) {
+		if sum > n {
+			return
+		}
+		if len(path) == k {
+			if sum == n {
+				ans = append(ans, append([]int(nil), path...))
+			}
+			return
+		}
+		for i := start; i <= 9; i++ {
+			if sum > n {
+				break
+			}
+			path = append(path, i)
+			dfs(i+1, sum+i)
+			path = path[:len(path)-1]
+		}
+	}
 
-void dfs(List<List<Integer>> res, LinkedList<Integer> list, int start, int k, int n) {
-	if (k == 0 && n == 0) {
-		res.add(new LinkedList<>(list));
-	} else if (k < 0) {
-		return;
-	}
-	// 剩余k个数的和大于n时不需要遍历
-	for (int i = start; i < 10 && n >= k * i + k * (k - 1) / 2; ++i) {
-		list.add(i);
-		dfs(res, list, i + 1, k - 1, n - i);
-		list.removeLast();
-	}
+	dfs(1, 0)
+	return
 }
 ```
 
@@ -414,49 +430,27 @@ void dfs(List<List<Integer>> res, LinkedList<Integer> list, int start, int k, in
 
 [17. 电话号码的字母组合](https://leetcode.cn/problems/letter-combinations-of-a-phone-number)
 
-```java
-public List<String> letterCombinations(String digits) {
-	LinkedList<String> list = new LinkedList<>();
-	if (digits.isEmpty())
-		return list;
-	String[] mapping = { "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
-	list.add("");
-	for (int i = 0; i < digits.length(); i++) {
-		int index = Character.getNumericValue(digits.charAt(i));
-		while (list.peek().length() == i) {
-			String s = list.remove();
-			for (char ch : mapping[index].toCharArray()) {
-				list.add(s + ch);
-			}
+```go
+func letterCombinations(digits string) (ans []string) {
+	if len(digits) == 0 {
+		return
+	}
+	lookup := []string{"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"}
+	var path []byte
+	var dfs func(int)
+	dfs = func(pos int) {
+		if pos == len(digits) {
+			ans = append(ans, string(path))
+			return
+		}
+		letters := lookup[digits[pos]-'0']
+		for i := range letters {
+			path = append(path, letters[i])
+			dfs(pos + 1)
+			path = path[:len(path)-1]
 		}
 	}
-	return list;
-}
-```
-
-方法二
-
-```java
-static String[] arr = { "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
-static StringBuilder sb = new StringBuilder();
-
-public List<String> letterCombinations(String digits) {
-	List<String> list = new LinkedList<>();
-	if (digits.isEmpty())
-		return list;
-	dfs(list, 0, digits);
-	return list;
-}
-
-void dfs(List<String> list, int n, String digits) {
-	if (n == digits.length()) {
-		list.add(sb.toString());
-		return;
-	}
-	for (int i = 0; i < arr[Character.getNumericValue(digits.charAt(n))].length(); ++i) {
-		sb.append(arr[Character.getNumericValue(digits.charAt(n))].charAt(i));
-		dfs(list, n + 1, digits);
-		sb.deleteCharAt(sb.length() - 1);
-	}
+	dfs(0)
+	return
 }
 ```

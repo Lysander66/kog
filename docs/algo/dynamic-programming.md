@@ -74,22 +74,16 @@ func max(x, y int) int {
 
 ```go
 func maxSubArray(nums []int) int {
-	if len(nums) == 0 {
-		return 0
-	}
-	curr, ans := nums[0], nums[0]
+	max := nums[0]
 	for i := 1; i < len(nums); i++ {
-		curr = max(curr+nums[i], nums[i])
-		ans = max(ans, curr)
+		if nums[i]+nums[i-1] > nums[i] {
+			nums[i] += nums[i-1]
+		}
+		if nums[i] > max {
+			max = nums[i]
+		}
 	}
-	return ans
-}
-
-func max(x, y int) int {
-	if x > y {
-		return x
-	}
-	return y
+	return max
 }
 ```
 
@@ -318,18 +312,19 @@ func fib(n int) int {
 
 [10- I. 斐波那契数列](https://leetcode.cn/problems/fei-bo-na-qi-shu-lie-lcof/)
 
-> 根据题目要求，答案需要取模 1e9+7（1000000007）
+> 根据题目要求，答案需要取模 1e9+7
 
 ```go
 func fib(n int) int {
 	if n < 2 {
 		return n
 	}
+	const mod int = 1e9 + 7
 	a, b, c := 0, 0, 1
 	for i := 2; i <= n; i++ {
 		a = b
 		b = c
-		c = (a + b) % 1000000007
+		c = (a + b) % mod
 	}
 	return c
 }
@@ -353,8 +348,9 @@ func numWays(n int) int {
 
 [300. 最长递增子序列](https://leetcode.cn/problems/longest-increasing-subsequence)
 
+动态规划 dp[i] = max(dp[j]) + 1，其中 0 ≤ j < i 且 num[j] < num[i]
+
 ```go
-// 动态规划 dp[i]=max(dp[j])+1,其中0≤j<i且num[j]<num[i]
 func lengthOfLIS(nums []int) int {
 	if len(nums) == 0 {
 		return 0
