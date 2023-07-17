@@ -32,7 +32,7 @@ sidebar_position: 2
 
 ### 对称二叉树
 
-[101. 对称二叉树](https://leetcode.cn/problems/symmetric-tree/)
+[101. 对称二叉树](https://leetcode.cn/problems/symmetric-tree)
 
 ```go
 func isSymmetric(root *TreeNode) bool {
@@ -127,15 +127,46 @@ func mergeTrees(t1 *TreeNode, t2 *TreeNode) *TreeNode {
 - inorder 中序遍历 left-root-right
 - postorder 后序遍历 left-right-root
 
+**递归**
+
+```go
+func preorderTraversal(root *TreeNode) []int {
+	var res []int
+	var dfs func(*TreeNode)
+	dfs = func(root *TreeNode) {
+		if root == nil {
+			return
+		}
+		res = append(res, root.Val)
+		dfs(root.Left)
+		dfs(root.Right)
+	}
+	dfs(root)
+	return res
+}
+```
+
+```go
+// inorderTraversal
+dfs(root.Left)
+res = append(res, root.Val)
+dfs(root.Right)
+
+// postorderTraversal
+dfs(root.Left)
+dfs(root.Right)
+res = append(res, root.Val)
+```
+
 ### 中序遍历
 
 [94. 二叉树的中序遍历](https://leetcode.cn/problems/binary-tree-inorder-traversal)
 
 ```go
 func inorderTraversal(root *TreeNode) (res []int) {
-	p := root
 	var stack []*TreeNode
-	for len(stack) > 0 || p != nil {
+	p := root
+	for p != nil || len(stack) > 0 {
 		if p != nil {
 			stack = append(stack, p)
 			p = p.Left
@@ -161,14 +192,14 @@ func preorderTraversal(root *TreeNode) (res []int) {
 	}
 	stack := []*TreeNode{root}
 	for len(stack) > 0 {
-		node := stack[len(stack)-1]
+		top := stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
-		res = append(res, node.Val)
-		if node.Right != nil {
-			stack = append(stack, node.Right)
+		res = append(res, top.Val)
+		if top.Right != nil {
+			stack = append(stack, top.Right)
 		}
-		if node.Left != nil {
-			stack = append(stack, node.Left)
+		if top.Left != nil {
+			stack = append(stack, top.Left)
 		}
 	}
 	return
@@ -179,6 +210,9 @@ func preorderTraversal(root *TreeNode) (res []int) {
 
 [145. 二叉树的后序遍历](https://leetcode.cn/problems/binary-tree-postorder-traversal)
 
+调整一下前序遍历 root-left-right 的代码，改为 root-right-left，然后反转结果数组，
+后序遍历 left-right-root
+
 ```go
 func postorderTraversal(root *TreeNode) (res []int) {
 	if root == nil {
@@ -186,14 +220,14 @@ func postorderTraversal(root *TreeNode) (res []int) {
 	}
 	stack := []*TreeNode{root}
 	for len(stack) > 0 {
-		node := stack[len(stack)-1]
+		top := stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
-		res = append(res, node.Val)
-		if node.Left != nil {
-			stack = append(stack, node.Left)
+		res = append(res, top.Val)
+		if top.Left != nil {
+			stack = append(stack, top.Left)
 		}
-		if node.Right != nil {
-			stack = append(stack, node.Right)
+		if top.Right != nil {
+			stack = append(stack, top.Right)
 		}
 	}
 	// reverse
@@ -205,87 +239,72 @@ func postorderTraversal(root *TreeNode) (res []int) {
 }
 ```
 
-递归
-
-```go
-func inorderTraversal(root *TreeNode) (res []int) {
-	var dfs func(*TreeNode)
-	dfs = func(node *TreeNode) {
-		if node == nil {
-			return
-		}
-		dfs(node.Left)
-		res = append(res, node.Val)
-		dfs(node.Right)
-	}
-	dfs(root)
-	return
-}
-
-func preorderTraversal(root *TreeNode) (vals []int) {
-	var dfs func(*TreeNode)
-	dfs = func(node *TreeNode) {
-		if node == nil {
-			return
-		}
-		vals = append(vals, node.Val)
-		dfs(node.Left)
-		dfs(node.Right)
-	}
-	dfs(root)
-	return
-}
-
-func postorderTraversal(root *TreeNode) (res []int) {
-	var dfs func(*TreeNode)
-	dfs = func(node *TreeNode) {
-		if node == nil {
-			return
-		}
-		dfs(node.Left)
-		dfs(node.Right)
-		res = append(res, node.Val)
-	}
-	dfs(root)
-	return
-}
-```
-
 ### 层序遍历
 
 [102. 二叉树的层次遍历](https://leetcode.cn/problems/binary-tree-level-order-traversal)
 
 ```go
-func levelOrder(root *TreeNode) [][]int {
-	res := make([][]int, 0)
+func levelOrder(root *TreeNode) (res [][]int) {
 	if root == nil {
-		return res
+		return
 	}
-	queue := []*TreeNode{root}
+	q := []*TreeNode{root}
 	level := 0
-	for len(queue) > 0 {
-		length := len(queue)
+	for len(q) > 0 {
+		length := len(q)
 		res = append(res, []int{})
 		for i := 0; i < length; i++ {
-			node := queue[i]
+			node := q[i]
 			res[level] = append(res[level], node.Val)
 			if node.Left != nil {
-				queue = append(queue, node.Left)
+				q = append(q, node.Left)
 			}
 			if node.Right != nil {
-				queue = append(queue, node.Right)
+				q = append(q, node.Right)
 			}
 		}
-		queue = queue[length:]
+		q = q[length:]
 		level++
 	}
-	return res
+	return
+}
+```
+
+### 从前序与中序遍历序列构造二叉树
+
+[105. 从前序与中序遍历序列构造二叉树](https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal)
+
+> 题目说，假设树中没有重复的元素
+
+```go
+func buildTree(preorder []int, inorder []int) *TreeNode {
+	// 用于快速定位根节点
+	indexMap := make(map[int]int, len(inorder))
+	for i, v := range inorder {
+		indexMap[v] = i
+	}
+	var dfs func(int, int, int) *TreeNode
+	dfs = func(preStart, preEnd, inStart int) *TreeNode {
+		if preStart > preEnd {
+			return nil
+		}
+		// 前序遍历的第一个节点就是根节点
+		root := &TreeNode{Val: preorder[preStart]}
+		// 在中序遍历中定位根节点
+		rootIdx := indexMap[preorder[preStart]]
+		// 左子树中的节点数目
+		leftSize := rootIdx - inStart
+		root.Left = dfs(preStart+1, preStart+leftSize, inStart)
+		root.Right = dfs(preStart+leftSize+1, preEnd, rootIdx+1)
+		return root
+	}
+	return dfs(0, len(preorder)-1, 0)
 }
 ```
 
 ### 之字形层序遍历
 
-[103. 二叉树的锯齿形层序遍历](https://leetcode.cn/problems/binary-tree-zigzag-level-order-traversal/)
+[103. 二叉树的锯齿形层序遍历](https://leetcode.cn/problems/binary-tree-zigzag-level-order-traversal)
 
 ### 自底向上的层序遍历
 
@@ -326,38 +345,6 @@ func levelOrderBottom(root *TreeNode) [][]int {
 }
 ```
 
-### 从前序与中序遍历序列构造二叉树
-
-[105. 从前序与中序遍历序列构造二叉树](https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
-
-> 题目说，假设树中没有重复的元素
-
-```go
-func buildTree(preorder []int, inorder []int) *TreeNode {
-	// 用于快速定位根节点
-	indexMap := make(map[int]int, len(inorder))
-	for i, v := range inorder {
-		indexMap[v] = i
-	}
-	var dfs func(int, int, int) *TreeNode
-	dfs = func(preStart, preEnd, inStart int) *TreeNode {
-		if preStart > preEnd {
-			return nil
-		}
-		// 前序遍历的第一个节点就是根节点
-		root := &TreeNode{Val: preorder[preStart]}
-		// 在中序遍历中定位根节点
-		rootIdx := indexMap[preorder[preStart]]
-		// 左子树中的节点数目
-		leftSize := rootIdx - inStart
-		root.Left = dfs(preStart+1, preStart+leftSize, inStart)
-		root.Right = dfs(preStart+leftSize+1, preEnd, rootIdx+1)
-		return root
-	}
-	return dfs(0, len(preorder)-1, 0)
-}
-```
-
 ### 二叉树的最大深度
 
 [104. 二叉树的最大深度](https://leetcode.cn/problems/maximum-depth-of-binary-tree)
@@ -382,7 +369,7 @@ func max(x, y int) int {
 
 [111. 二叉树的最小深度](https://leetcode.cn/problems/minimum-depth-of-binary-tree)
 
-> dfs
+**DFS**
 
 ```go
 func minDepth(root *TreeNode) int {
@@ -392,25 +379,26 @@ func minDepth(root *TreeNode) int {
 	if root.Left == nil && root.Right == nil {
 		return 1
 	}
-	minD := math.MaxInt32
+	min := math.MaxInt32
 	if root.Left != nil {
-		minD = min(minDepth(root.Left), minD)
+		min = minInt(minDepth(root.Left), min)
 	}
 	if root.Right != nil {
-		minD = min(minDepth(root.Right), minD)
+		min = minInt(minDepth(root.Right), min)
 	}
-	return minD + 1
+	return min + 1
 }
 
-func min(x, y int) int {
-	if x < y {
-		return x
+func minInt(x, y int) int {
+	if y < x {
+		return y
 	}
-	return y
+	return x
 }
 ```
 
-> bfs
+**BFS**
+
 > 当我们找到一个叶子节点时，直接返回这个叶子节点的深度。广度优先搜索的性质保证了最先搜索到的叶子节点的深度一定最小。
 
 ```go
@@ -768,3 +756,7 @@ func (trie *Trie) StartsWith(prefix string) bool {
 	return true
 }
 ```
+
+## references
+
+1. [前序、中序、后序、层序](http://www.hangdaowangluo.com/archives/2979)

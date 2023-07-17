@@ -71,7 +71,7 @@ source ~/.bashrc
 ### Grafana
 
 - [Grafana](https://metrics.marzesport.cn)
-- [dashboards](https://grafana.com/grafana/dashboards/)
+- [dashboards](https://grafana.com/grafana/dashboards)
   8919
   10566
   14282
@@ -146,4 +146,4 @@ scrape_configs:
 
 ## references
 
-1. [Prometheus](https://prometheus.io/docs/prometheus/latest/getting_started/)
+1. [Prometheus](https://prometheus.io/docs/prometheus/latest/getting_started)

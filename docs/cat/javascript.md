@@ -415,4 +415,4 @@ withinErrorMargin(0.1 + 0.2, 0.3) // true
 
 - [Mozilla Developer Network](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)
 - [廖雪峰. JavaScript 教程](https://www.liaoxuefeng.com/wiki/1022910821149312)
-- [阮一峰. ECMAScript 6 入门](http://es6.ruanyifeng.com/)
+- [阮一峰. ECMAScript 6 入门](http://es6.ruanyifeng.com)

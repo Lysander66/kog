@@ -94,7 +94,7 @@ public String getPermutation(int n, int k) {
 
 ### 解数独
 
-[37. 解数独](https://leetcode.cn/problems/sudoku-solver/)
+[37. 解数独](https://leetcode.cn/problems/sudoku-solver)
 
 ```go
 func solveSudoku(board [][]byte) {

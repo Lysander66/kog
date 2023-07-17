@@ -8,7 +8,7 @@ sidebar_position: 3
 
 ### 反转链表
 
-[206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/)
+[206. 反转链表](https://leetcode.cn/problems/reverse-linked-list)
 
 [1]: http://cdn.lysander.top/reverse-linked-list.gif
 
@@ -59,7 +59,7 @@ func reverseBetween(head *ListNode, m int, n int) *ListNode {
 
 ### 删除节点
 
-[237. 删除链表中的节点](https://leetcode.cn/problems/delete-node-in-a-linked-list/)
+[237. 删除链表中的节点](https://leetcode.cn/problems/delete-node-in-a-linked-list)
 
 将想要删除的节点的值替换为它后面节点中的值，然后删除它之后的节点
 
@@ -72,7 +72,7 @@ func deleteNode(node *ListNode) {
 
 ### 删除链表的节点
 
-[剑指 Offer 18. 删除链表的节点](https://leetcode.cn/problems/shan-chu-lian-biao-de-jie-dian-lcof/)
+[剑指 Offer 18. 删除链表的节点](https://leetcode.cn/problems/shan-chu-lian-biao-de-jie-dian-lcof)
 
 ```go
 func deleteNode(head *ListNode, val int) *ListNode {
@@ -96,7 +96,7 @@ func deleteNode(head *ListNode, val int) *ListNode {
 
 ### 移除链表元素
 
-[203. 移除链表元素](https://leetcode.cn/problems/remove-linked-list-elements/)
+[203. 移除链表元素](https://leetcode.cn/problems/remove-linked-list-elements)
 
 ```go
 func removeElements(head *ListNode, val int) *ListNode {
@@ -116,7 +116,7 @@ func removeElements(head *ListNode, val int) *ListNode {
 
 ### 删除排序链表中的重复元素
 
-[83. 删除排序链表中的重复元素](https://leetcode.cn/problems/remove-duplicates-from-sorted-list/)
+[83. 删除排序链表中的重复元素](https://leetcode.cn/problems/remove-duplicates-from-sorted-list)
 
 > 由于输入的列表已排序，因此我们可以通过将结点的值与它之后的结点进行比较来确定它是否为重复结点。如果它是重复的，我们更改当前结点的 next 指针，以便它跳过下一个结点并直接指向下一个结点之后的结点。
 
@@ -136,7 +136,7 @@ func deleteDuplicates(head *ListNode) *ListNode {
 
 ### 删除排序链表中的重复元素 II
 
-[82. 删除排序链表中的重复元素 II](https://leetcode.cn/problems/remove-duplicates-from-sorted-list-ii/)
+[82. 删除排序链表中的重复元素 II](https://leetcode.cn/problems/remove-duplicates-from-sorted-list-ii)
 
 ```go
 func deleteDuplicates(head *ListNode) *ListNode {

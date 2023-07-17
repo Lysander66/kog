@@ -145,7 +145,7 @@ func nextGreatestLetter(letters []byte, target byte) byte {
 
 ### Pow(x, n)
 
-[50. Pow(x, n)](https://leetcode.cn/problems/powx-n/)
+[50. Pow(x, n)](https://leetcode.cn/problems/powx-n)
 
 > 快速幂
 
@@ -167,7 +167,7 @@ func myPow(x float64, n int) float64 {
 
 ### 寻找旋转排序数组中的最小值
 
-[153. 寻找旋转排序数组中的最小值](https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/)
+[153. 寻找旋转排序数组中的最小值](https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array)
 
 > 画图理解。要么是直线，例如 `[1, 2, 3, 4, 5]`  
 > 要么是折线，例如 `[3, 4, 5, 1, 2]`，前半段`[3, 4, 5]` 在后半段`[1, 2]`的上方
@@ -189,7 +189,7 @@ func findMin(nums []int) int {
 
 ### 寻找旋转排序数组中的最小值 II
 
-[154. 寻找旋转排序数组中的最小值 II](https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array-ii/)
+[154. 寻找旋转排序数组中的最小值 II](https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array-ii)
 
 > 按题设，可能存在重复元素
 
