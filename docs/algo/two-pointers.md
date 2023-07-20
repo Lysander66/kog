@@ -151,8 +151,7 @@ func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
 ```go
 func merge(nums1 []int, m int, nums2 []int, n int) {
 	tail := m + n - 1
-	m--
-	n--
+	m, n = m-1, n-1
 	for m >= 0 && n >= 0 {
 		if nums1[m] < nums2[n] {
 			nums1[tail] = nums2[n]

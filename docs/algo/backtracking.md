@@ -70,25 +70,33 @@ func combine(n int, k int) (ans [][]int) {
 > 暴力回溯需要在回溯到第 k 个排列时终止就不会超时了，但是效率依旧感人。
 > [可以用数学的方法来解](https://www.cnblogs.com/ariel-dreamland/p/9149577.html)
 
-```java
-public String getPermutation(int n, int k) {
-	StringBuilder sb = new StringBuilder();
-	List<Integer> candidates = new LinkedList<>();
-	int[] factorials = new int[n + 1];
-	factorials[0] = 1;
-	int fact = 1;
-	for (int i = 1; i <= n; ++i) {
-		candidates.add(i);
-		fact *= i;
-		factorials[i] = fact;
+```go
+func getPermutation(n int, k int) string {
+	factorial := make([]int, n)
+	factorial[0] = 1
+	for i := 1; i < n; i++ {
+		factorial[i] = factorial[i-1] * i
 	}
-	k--;
-	for (int i = n - 1; i >= 0; --i) {
-		int index = k / factorials[i];
-		sb.append(candidates.remove(index));
-		k -= index * factorials[i];
+	k--
+
+	ans := ""
+	valid := make([]int, n+1)
+	for i := 0; i < len(valid); i++ {
+		valid[i] = 1
 	}
-	return sb.toString();
+	for i := 1; i <= n; i++ {
+		order := k/factorial[n-i] + 1
+		for j := 1; j <= n; j++ {
+			order -= valid[j]
+			if order == 0 {
+				ans += strconv.Itoa(j)
+				valid[j] = 0
+				break
+			}
+		}
+		k %= factorial[n-i]
+	}
+	return ans
 }
 ```
 

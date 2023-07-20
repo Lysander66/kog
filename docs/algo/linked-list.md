@@ -167,14 +167,21 @@ func deleteDuplicates(head *ListNode) *ListNode {
 > 当访问 A 链表的指针访问到链表尾部时，令它从链表 B 的头部开始访问链表 B；同样地，当访问 B 链表的指针访问到链表尾部时，令它从链表 A 的头部开始访问链表 A  
 > 这样就能控制访问 A 和 B 两个链表的指针能同时访问到交点。若不相交，则 a 和 b 都为 null，退出循环，并返回 null。
 
-```java
-public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-	ListNode a = headA;
-	ListNode b = headB;
-	while (a != b) {
-		a = a == null ? headB : a.next;
-		b = b == null ? headA : b.next;
+```go
+func getIntersectionNode(headA, headB *ListNode) *ListNode {
+	a, b := headA, headB
+	for a != b {
+		if a == nil {
+			a = headB
+		} else {
+			a = a.Next
+		}
+		if b == nil {
+			b = headA
+		} else {
+			b = b.Next
+		}
 	}
-	return a;
+	return a
 }
 ```

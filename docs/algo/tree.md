@@ -158,29 +158,6 @@ dfs(root.Right)
 res = append(res, root.Val)
 ```
 
-### 中序遍历
-
-[94. 二叉树的中序遍历](https://leetcode.cn/problems/binary-tree-inorder-traversal)
-
-```go
-func inorderTraversal(root *TreeNode) (res []int) {
-	var stack []*TreeNode
-	p := root
-	for p != nil || len(stack) > 0 {
-		if p != nil {
-			stack = append(stack, p)
-			p = p.Left
-		} else {
-			p = stack[len(stack)-1]
-			stack = stack[:len(stack)-1]
-			res = append(res, p.Val)
-			p = p.Right
-		}
-	}
-	return
-}
-```
-
 ### 前序遍历
 
 [144. 二叉树的前序遍历](https://leetcode.cn/problems/binary-tree-preorder-traversal)
@@ -206,34 +183,59 @@ func preorderTraversal(root *TreeNode) (res []int) {
 }
 ```
 
+### 中序遍历
+
+[94. 二叉树的中序遍历](https://leetcode.cn/problems/binary-tree-inorder-traversal)
+
+```go
+func inorderTraversal(root *TreeNode) (res []int) {
+	var stack []*TreeNode
+	for root != nil || len(stack) > 0 {
+		for root != nil {
+			stack = append(stack, root)
+			root = root.Left
+		}
+		root = stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+		res = append(res, root.Val)
+		root = root.Right
+	}
+	return
+}
+```
+
 ### 后序遍历
 
 [145. 二叉树的后序遍历](https://leetcode.cn/problems/binary-tree-postorder-traversal)
 
-调整一下前序遍历 root-left-right 的代码，改为 root-right-left，然后反转结果数组，
-后序遍历 left-right-root
+- 中序遍历中，从栈中弹出的节点，其左子树是访问完了，可以直接访问该节点，然后接下来访问右子树。
+- 后序遍历中，从栈中弹出的节点，我们只能确定其左子树肯定访问完了，但是无法确定右子树是否访问过。
+
+因此，我们在后序遍历中，引入了一个 prev 来记录历史访问记录。  
+当访问完一棵子树的时候，我们用 prev 指向该节点。  
+这样，在回溯到父节点的时候，我们可以依据 prev 是指向左子节点，还是右子节点，来判断父节点的访问情况。
 
 ```go
 func postorderTraversal(root *TreeNode) (res []int) {
-	if root == nil {
-		return
-	}
-	stack := []*TreeNode{root}
-	for len(stack) > 0 {
-		top := stack[len(stack)-1]
+	var prev *TreeNode
+	var stack []*TreeNode
+	for root != nil || len(stack) > 0 {
+		for root != nil {
+			stack = append(stack, root)
+			root = root.Left
+		}
+		root = stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
-		res = append(res, top.Val)
-		if top.Left != nil {
-			stack = append(stack, top.Left)
+		// 没有右子树，或右子树已访问
+		if root.Right == nil || root.Right == prev {
+			res = append(res, root.Val)
+			prev = root
+			root = nil
+		} else {
+			// 右子树没有被访问，将当前节点压栈，访问右子树
+			stack = append(stack, root)
+			root = root.Right
 		}
-		if top.Right != nil {
-			stack = append(stack, top.Right)
-		}
-	}
-	// reverse
-	length := len(res)
-	for i := 0; i < length/2; i++ {
-		res[i], res[length-1-i] = res[length-1-i], res[i]
 	}
 	return
 }
@@ -432,39 +434,41 @@ func minDepth(root *TreeNode) int {
 
 [993. 二叉树的堂兄弟节点](https://leetcode.cn/problems/cousins-in-binary-tree)
 
-```java
-public boolean isCousins(TreeNode root, int x, int y) {
-    Queue<TreeNode> queue = new LinkedList<>();
-    queue.offer(root);
-    TreeNode node;
-    while (!queue.isEmpty()) {
-        int flag1 = 0;//该层等于x或y的结点个数
-        int size = queue.size();
-        while (size-- > 0) {
-            int flag2 = 0;//该结点的子结点等于x或y的个数
-            node = queue.poll();
-            if (node.left != null) {
-                //按题设，该二叉树结点val具有唯一值。找到一个等于x或y的结点则判断，没找到才add至队列
-                if (x == node.left.val || y == node.left.val) {
-                    flag1++;
-                    flag2++;
-                } else {
-                    queue.add(node.left);
-                }
-            }
-            if (node.right != null) {
-                if (x == node.right.val || y == node.right.val) {
-                    flag1++;
-                    flag2++;
-                } else {
-                    queue.add(node.right);
-                }
-            }
-            if (flag2 == 2) return false;
-        }
-        if (flag1 == 2) return true;
-    }
-    return false;
+```go
+func isCousins(root *TreeNode, x, y int) bool {
+	var xParent, yParent *TreeNode
+	var xDepth, yDepth int
+	var xFound, yFound bool
+
+	var dfs func(node, parent *TreeNode, depth int)
+	dfs = func(node, parent *TreeNode, depth int) {
+		if node == nil {
+			return
+		}
+
+		if node.Val == x {
+			xParent, xDepth, xFound = parent, depth, true
+		} else if node.Val == y {
+			yParent, yDepth, yFound = parent, depth, true
+		}
+
+		// 如果两个节点都找到了，就可以提前退出遍历
+		// 即使不提前退出，对最坏情况下的时间复杂度也不会有影响
+		if xFound && yFound {
+			return
+		}
+
+		dfs(node.Left, node, depth+1)
+
+		if xFound && yFound {
+			return
+		}
+
+		dfs(node.Right, node, depth+1)
+	}
+	dfs(root, nil, 0)
+
+	return xDepth == yDepth && xParent != yParent
 }
 ```
 
@@ -634,21 +638,19 @@ func preorderTraversal(root *TreeNode) []int {
 
 ```go
 func isValidBST(root *TreeNode) bool {
+	max := math.MinInt64
 	var stack []*TreeNode
-	inorder := -1 << 63
-	for len(stack) > 0 || root != nil {
+	for root != nil || len(stack) > 0 {
 		for root != nil {
-			// push
 			stack = append(stack, root)
 			root = root.Left
 		}
-		// pop
 		root = stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
-		if root.Val <= inorder {
+		if root.Val <= max {
 			return false
 		}
-		inorder = root.Val
+		max = root.Val
 		root = root.Right
 	}
 	return true
