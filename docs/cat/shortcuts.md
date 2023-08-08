@@ -79,6 +79,8 @@ Manipulating tabs:
 | ⌥ ⌘ F7          | Show Usages                 |      |
 | ⌘ ]             | navigate forward            |      |
 | ⌘ [             | navigate backwards          |      |
+| ⇧ ⌘ ]           | Select Next Tab             |      |
+| ⇧ ⌘ [           | Select Previous Tab         |      |
 | ⌘ +             | Expand                      |      |
 | ⌘ -             | Collapse                    |      |
 | ⇧ ⌘ +           | Expand All                  |      |

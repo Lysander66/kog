@@ -102,7 +102,6 @@ Using the GNU flavor of command line tools (instead of the FreeBSD flavor) shoul
 | Go to End of Line        | ⌃E         | ⌘→                        |
 | Go to Beginning of File  | ⌘↑         | GoLand ⌘Home              |
 | Go to End of File        | ⌘↓         | GoLand ⌘End               |
-| Next Tab                 | ⌃Tab       | GoLand ⇧⌘]                |
 
 ## Terminal
 
