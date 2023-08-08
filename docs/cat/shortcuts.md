@@ -79,6 +79,10 @@ Manipulating tabs:
 | ⌥ ⌘ F7          | Show Usages                 |      |
 | ⌘ ]             | navigate forward            |      |
 | ⌘ [             | navigate backwards          |      |
+| ⌘ +             | Expand                      |      |
+| ⌘ -             | Collapse                    |      |
+| ⇧ ⌘ +           | Expand All                  |      |
+| ⇧ ⌘ -           | Collapse All                |      |
 
 - [.ideavimrc](https://plugins.jetbrains.com/plugin/164-ideavim)
 
