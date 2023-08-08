@@ -1,5 +1,5 @@
 ---
-slug: Keyboard shortcuts
+title: Keyboard shortcuts
 ---
 
 ## General
