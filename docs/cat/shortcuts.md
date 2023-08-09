@@ -2,25 +2,37 @@
 title: Keyboard shortcuts
 ---
 
-## General
+## Common
 
-| Shortcut | Action                        | Note |
-| -------- | ----------------------------- | ---- |
-| ⌘ G      | Find Next                     |      |
-| ⇧ ⌘ G    | Find Previous                 |      |
-| ⌃ Tab    | Jump to the next open tab     |      |
-| ⇧ ⌃ Tab  | Jump to the previous open tab |      |
-
-## macOS
+| Shortcut | Action                                                                            | Note |
+| -------- | --------------------------------------------------------------------------------- | ---- |
+| ⌘ A      | Select All items                                                                  |      |
+| ⌘ W      | Close the front window                                                            |      |
+| ⌥ ⌘ W    | Close all windows of the app                                                      |      |
+| ⌃ A      | Move to the beginning of the line or paragraph                                    |      |
+| ⌃ E      | Move to the end of a line or paragraph                                            |      |
+| ⇧ ⌘ ←    | Select the text between the insertion point and the beginning of the current line |      |
+| ⇧ ⌘ →    | Select the text between the insertion point and the end of the current line       |      |
+| ⇧ ⌘ ↑    | Select the text between the insertion point and the beginning of the document     |      |
+| ⇧ ⌘ ↓    | Select the text between the insertion point and the end of the document           |      |
+| ⌘ G      | Find Next                                                                         |      |
+| ⇧ ⌘ G    | Find Previous                                                                     |      |
+| ⌃ Tab    | Jump to the next open tab                                                         |      |
+| ⇧ ⌃ Tab  | Jump to the previous open tab                                                     |      |
 
 - [Mac keyboard shortcuts](https://support.apple.com/en-hk/HT201236)
 
-| Shortcut | Action       | Note |
-| -------- | ------------ | ---- |
-| ⌘ V      | Paste        |      |
-| ⌥ ⌘ V    | Cut          |      |
-| ⌥ ⌘ D    | Dock         |      |
-| ⇧ ⌘ .    | Hidden files |      |
+| Shortcut | Action                                          | Note                           |
+| -------- | ----------------------------------------------- | ------------------------------ |
+| ⌘ V      | Paste                                           |                                |
+| ⌥ ⌘ V    | Cut                                             |                                |
+| ⌘ ,      | Open preferences for the front app              | 打开最前面的 App 的偏好设置    |
+| ⌃ ⌘ Q    | Immediately lock your screen                    | 立即锁定屏幕                   |
+| ⌘ D      | Duplicate the selected files                    | 复制所选文件                   |
+| ⌘ R      | Show the original file for the selected alias   | Finder                         |
+| ⌥ ⌘ D    | Dock                                            | 显示或隐藏“程序坞”             |
+| ⇧ ⌘ P    | Show or hide the Preview pane in Finder windows | 隐藏或显示“访达”窗口中的路径栏 |
+| ⇧ ⌘ .    | Hidden files                                    |                                |
 
 ## Chrome
 

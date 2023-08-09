@@ -85,7 +85,6 @@ Using the GNU flavor of command line tools (instead of the FreeBSD flavor) shoul
 
 | Command                  | Key        | Remark                    |
 | :----------------------- | :--------- | ------------------------- |
-| Open Settings            | ⌘,         |                           |
 | Preview                  | Space      |                           |
 | Switch input             | ⌃Space     |                           |
 | Switch Input             | ⇪          | Long press to switch case |
@@ -98,10 +97,6 @@ Using the GNU flavor of command line tools (instead of the FreeBSD flavor) shoul
 | Close                    | ⌘W         | ⌥⌘W Close All             |
 | Quit                     | ⌘Q         |                           |
 | Find                     | ⌘F         |                           |
-| Go to Beginning of Line  | ⌃A         | ⌘←                        |
-| Go to End of Line        | ⌃E         | ⌘→                        |
-| Go to Beginning of File  | ⌘↑         | GoLand ⌘Home              |
-| Go to End of File        | ⌘↓         | GoLand ⌘End               |
 
 ## Terminal
 
