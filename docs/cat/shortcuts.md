@@ -32,21 +32,10 @@ title: Keyboard shortcuts
 
 - [Vimium - The Hacker's Browser](https://github.com/philc/vimium)
 
-Vimium Options -> Custom key mappings
-
-```
-map f LinkHints.activateModeToOpenInNewTab
-map F LinkHints.activateMode
-map CO closeOtherTabs
-map >> closeTabsOnRight
-```
-
 _Key Bindings_
 
 Navigating the current page:
 
-    d       scroll down half a page
-    u       scroll up half a page
     yy      copy the current url to the clipboard
 
 Navigating to new pages:
@@ -56,17 +45,29 @@ Navigating to new pages:
     b       Open bookmark
     B       Open bookmark in a new tab
 
-Navigating your history:
-
-    H       go back in history
-    L       go forward in history
-
 Manipulating tabs:
 
     t       create tab
     x       close current tab
     X       restore closed tab (i.e. unwind the 'x' command)
     W       move current tab to new window
+
+_Vimium Options -> Custom key mappings_
+
+```
+unmap u
+unmap d
+unmap H
+unmap L
+map <c-u> scrollPageUp
+map <c-d> scrollPageDown
+# 跟 GoLand 一致
+map <m-[> goBack
+# 跟 GoLand 一致
+map <m-]> goForward
+map >> closeTabsOnRight
+map CO closeOtherTabs
+```
 
 ## GoLand
 
