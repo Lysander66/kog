@@ -115,6 +115,8 @@ nnoremap O O<esc>
 
 set incsearch
 set hlsearch
+
+set clipboard+=unnamed
 ```
 
 ## Visual Studio Code
