@@ -103,10 +103,17 @@ map CO closeOtherTabs
 
 ```vim
 Plug 'easymotion/vim-easymotion'
+set easymotion
 " set <leader> to <space>
 let mapleader = " "
-set easymotion
 map <Leader> <Plug>(easymotion-prefix)
+map <leader>s <Plug>(easymotion-s2)
+
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+
 
 set showmode
 inoremap jj <Esc>
@@ -116,7 +123,7 @@ nnoremap O O<esc>
 set incsearch
 set hlsearch
 
-set clipboard+=unnamed
+set clipboard^=unnamed,unnamedplus
 ```
 
 ## Visual Studio Code
